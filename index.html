@@ -3,66 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bvaide Jewellery | Elegance Redefined</title>
+    <title>Bvaide Jewellery | Timeless Luxury</title>
     <style>
         body {
-            background-color: #fffafb; 
-            font-family: 'Times New Roman', serif;
-            color: #4a4a4a;
-            text-align: center;
+            background-color: #f7f7f7;
+            font-family: 'Garamond', 'Times New Roman', serif;
+            color: #222;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
         }
-        .header {
-            background-color: #ffffff;
-            padding: 50px 20px;
-            border-bottom: 2px solid #d4af37;
+        .navbar {
+            padding: 25px;
+            background: white;
+            text-align: center;
+            border-bottom: 1px solid #f0f0f0;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+        .hero {
+            background-color: #fff;
+            padding: 120px 20px;
+            text-align: center;
+            border-bottom: 3px solid #b8860b;
         }
         h1 {
-            color: #d4af37;
-            font-size: 2.2rem;
-            letter-spacing: 3px;
+            color: #b8860b;
+            font-size: 4rem;
             margin: 0;
+            font-weight: lighter;
+            letter-spacing: 12px;
             text-transform: uppercase;
         }
         .tagline {
             font-style: italic;
-            font-size: 1rem;
-            color: #888;
-            margin-top: 10px;
+            color: #999;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
         }
-        .container {
-            padding: 60px 20px;
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
         }
-        h2 {
-            font-weight: normal;
-            letter-spacing: 1px;
+        .section-title {
+            color: #222;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            margin-bottom: 60px;
+            position: relative;
         }
-        .btn {
-            background-color: #d4af37;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 2px;
-            display: inline-block;
-            margin-top: 30px;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: #b8860b;
+            margin: 15px auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        .card {
+            background: white;
+            padding: 60px 40px;
+            border: 1px solid #eee;
+            transition: all 0.5s ease;
+        }
+        .card:hover {
+            border-color: #b8860b;
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(184, 134, 11, 0.1);
+        }
+        .card h3 {
+            color: #b8860b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #777;
             font-size: 0.9rem;
+            text-transform: uppercase;
             letter-spacing: 1px;
+        }
+        .cta-btn {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 22px 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 70px;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: 0.4s;
+            border-radius: 0px;
+        }
+        .cta-btn:hover {
+            background-color: #b8860b;
+            color: white;
+        }
+        footer {
+            padding: 60px;
+            background: #111;
+            color: #555;
+            font-size: 0.75rem;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>BVAIDE JEWELLERY</h1>
-        <p class="tagline">Elegance in every piece</p>
+    <div class="navbar">Home &nbsp;&bull;&nbsp; Collections &nbsp;&bull;&nbsp; Our Story</div>
+
+    <div class="hero">
+        <h1>BVAIDE</h1>
+        <p class="tagline">Handcrafted Elegance Since 2026</p>
     </div>
 
-    <div class="container">
-        <h2>✨ Our Exclusive Collection ✨</h2>
-        <p>Crafting timeless beauty just for you. Full website coming soon.</p>
-        <a href="#" class="btn">DISCOVER MORE</a>
+    <div class="section">
+        <h2 class="section-title">The Collections</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Rings</h3>
+                <p>Timeless Symphony</p>
+            </div>
+            <div class="card">
+                <h3>Necklaces</h3>
+                <p>Pure Statement</p>
+            </div>
+            <div class="card">
+                <h3>Bracelets</h3>
+                <p>Modern Radiance</p>
+            </div>
+        </div>
+        
+        <a href="https://wa.me/91YOUR_NUMBER?text=Hi Bvaide, I am interested in your luxury collection." class="cta-btn">Inquire via WhatsApp</a>
     </div>
+
+    <footer>
+        &copy; 2026 BVAIDE LUXURY JEWELLERY. ALL RIGHTS RESERVED.
+    </footer>
 
 </body>
-</html>
+    </html>
+    
