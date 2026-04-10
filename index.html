@@ -1,161 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bvaide.in | Luxe & Loyal Brand</title>
+export default function BvaideWebsite() { return ( <div className="min-h-screen bg-white text-gray-900"> {/* Navbar */} <header className="flex justify-between items-center px-6 py-4 border-b"> <h1 className="text-2xl font-bold tracking-wide">BVAIDE</h1> <nav className="space-x-6 text-sm"> <a href="#home">Home</a> <a href="#collection">Collection</a> <a href="#about">About</a> <a href="#contact">Contact</a> </nav> </header>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0d0d0d;
-      color: #f5f5f5;
-    }
-
-    header {
-      background: linear-gradient(135deg, #111, #1c1c1c);
-      padding: 20px;
-      text-align: center;
-      border-bottom: 1px solid gold;
-    }
-
-    header h1 {
-      color: gold;
-      margin: 0;
-      font-size: 28px;
-      letter-spacing: 2px;
-    }
-
-    nav {
-      margin-top: 10px;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: gold;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-    }
-
-    .hero h2 {
-      font-size: 32px;
-      color: gold;
-    }
-
-    .hero p {
-      max-width: 600px;
-      margin: auto;
-      color: #ccc;
-      line-height: 1.6;
-    }
-
-    .btn {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 12px 20px;
-      background: gold;
-      color: #000;
-      text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h3 {
-      color: gold;
-      margin-bottom: 10px;
-    }
-
-    .card {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #333;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #333;
-      color: #888;
-      font-size: 13px;
-    }
-
-    .contact a {
-      color: gold;
-      text-decoration: none;
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <h1>BVAIDE.IN</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- HOME -->
-<div class="hero" id="home">
-  <h2>Luxe • Loyal • Bvaide</h2>
-  <p>
-    Welcome to Bvaide.in — ek premium aur trusted brand jithe har cheez elegance & loyalty naal banayi jandi hai.
-    Daily updates layi Instagram follow karo ❤️
-  </p>
-
-  <a class="btn" href="https://instagram.com" target="_blank">
-    Follow on Instagram
-  </a>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <h3>About Us</h3>
-  <div class="card">
-    <p>
-      Bvaide ek modern luxe brand hai jo trust, beauty te quality te focus karda hai.
-      Asi har customer nu family di tarah treat karde haan.
-      Sadi mission hai — “Loyalty with Luxury”.
-      <br><br>
-      Har product te update layi visit karo 👉 <b>bvaide.in</b>
+{/* Hero Section */}
+  <section id="home" className="text-center py-24 bg-gradient-to-b from-white to-yellow-50">
+    <h2 className="text-5xl font-light tracking-wide">
+      White & Gold Elegance
+    </h2>
+    <p className="mt-4 text-gray-600 max-w-xl mx-auto">
+      Premium anti-tarnish jewellery designed for modern luxury and everyday grace.
     </p>
-  </div>
-</section>
+    <button className="mt-6 px-6 py-2 bg-black text-white rounded-full">
+      Explore Collection
+    </button>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <h3>Contact Us</h3>
-  <div class="card contact">
-    <p>
-      📞 WhatsApp: <a href="https://wa.me/91XXXXXXXXXX">Chat with us</a><br>
-      📩 Instagram: <a href="https://instagram.com">DM us</a><br>
-      🌐 Website: <b>bvaide.in</b>
-    </p>
-  </div>
-</section>
+  {/* Collection */}
+  <section id="collection" className="py-20 px-6">
+    <h3 className="text-3xl text-center mb-10">Our Collection</h3>
+    <div className="grid md:grid-cols-3 gap-6">
+      {["Necklaces", "Rings", "Bracelets"].map((item) => (
+        <div key={item} className="border rounded-2xl p-6 text-center shadow-sm">
+          <div className="h-40 bg-yellow-50 rounded-xl mb-4" />
+          <h4 className="text-xl font-medium">{item}</h4>
+          <p className="text-sm text-gray-500 mt-2">
+            Minimal, elegant and anti-tarnish finish.
+          </p>
+        </div>
+      ))}
+    </div>
+  </section>
 
-<footer>
-  © 2026 Bvaide.in | Luxe & Loyal Brand | All Rights Reserved
-</footer>
-
-</body>
-</html>
+  {/* About */}
+  <section id="about" className="py-20 bg-gray-50 px-6 text-center">
+    <h
