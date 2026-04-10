@@ -1,40 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bvaide Essential Jewels | Premium Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:italic,wght@400;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <title>Bvaide | Professional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #D4AF37; --black: #0a0a0a; --white: #ffffff; --cream: #fcfbf7; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--black); background: var(--white); }
-        
-        /* Header */
-        header { padding: 30px; text-align: center; border-bottom: 1px solid #f0f0f0; background: var(--white); sticky: top; }
-        .brand-name { font-family: 'Cinzel', serif; font-size: 2.5rem; letter-spacing: 10px; margin: 0; }
-        .tagline { font-size: 0.7rem; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; margin-top: 5px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background-color: #f4f7f6; color: #333; }
+
+        /* Nav */
+        nav { background: #2c3e50; padding: 1rem 8%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        nav h1 { color: #fff; text-transform: uppercase; letter-spacing: 2px; }
+        nav ul { display: flex; list-style: none; }
+        nav ul li { margin-left: 25px; }
+        nav ul li a { color: #fff; text-decoration: none; transition: 0.3s; }
+        nav ul li a:hover { color: #3498db; }
 
         /* Hero */
-        .hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--cream); border-bottom: 1px solid #eee; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; font-style: italic; }
+        .hero { height: 70vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1350&q=80'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; }
+        .hero h2 { font-size: 3.5rem; margin-bottom: 15px; }
+        .btn { background: #3498db; color: white; padding: 12px 30px; text-decoration: none; border-radius: 25px; margin-top: 20px; transition: 0.3s; }
+        .btn:hover { background: #2980b9; box-shadow: 0 5px 15px rgba(52,152,219,0.4); }
 
-        /* Product Section (UPAR) */
-        .section-title { font-family: 'Cinzel', serif; text-align: center; margin: 60px 0 40px; font-size: 1.8rem; letter-spacing: 3px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 0 20px; max-width: 1200px; margin: 0 auto; }
-        .product-card { background: var(--cream); padding: 40px 20px; text-align: center; border: 1px solid #eee; transition: 0.4s; cursor: pointer; }
-        .product-card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .product-card h3 { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 2px; }
+        /* Sections */
+        section { padding: 80px 10%; }
+        .heading { text-align: center; margin-bottom: 50px; }
+        .heading h2 { font-size: 2.5rem; color: #2c3e50; }
 
-        /* About Us (Luxury Layout) */
-        .about-section { background: var(--black); color: var(--white); padding: 100px 20px; margin-top: 80px; text-align: center; }
-        .about-content { max-width: 800px; margin: 0 auto; }
-        .about-content h2 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 2.5rem; margin-bottom: 30px; }
-        .about-content p { font-weight: 200; line-height: 1.8; font-size: 1.1rem; opacity: 0.9; }
-        .founder-sign { font-family: 'Playfair Display', serif; font-style: italic; color: var(--gold); margin-top: 20px; font-size: 1.2rem; }
+        /* Services Grid */
+        .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
 
-        /* Footer */
-        footer { padding: 60px 20px; text-align: center; background: var(--white); }
-        .social-link { display: block; margin: 15px 0; color: var(--black); text-decoration: none; font-weight: 600; letter-spacing: 1px; }
-        .wa-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none
+        /* Contact Form */
+        .contact-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; outline: none; }
+        .submit-btn { background: #2c3e50; color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+        .submit-btn:hover { background: #34495e; }
 
-        
+        footer { background: #1a252f; color: white; text-align: center; padding: 25px; }
+
+        @media (max-width: 768px) { .hero h2 { font-size: 2.2rem; } nav ul { display: none; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>BVAIDE</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero" id="home">
+        <h2>Bvaide Solutions</h2>
+        <p>Simple. Modern. Effective.</p>
+        <a href="#services" class="btn">Explore More</a>
+    </div>
+
+    <section id="services">
+        <div class="heading">
+            <h2>Sadiyan Sahultaan</h2>
+        </div>
+        <div class="services">
+            <div class="card">
+                <h3>Strategy</h3>
+                <p>Asi tuhade business nu grow karan layi sahi plan banaunde han.</p>
+            </div>
+            <div class="card">
+                <h3>Branding</h3>
+                <p>Unique identity jo market vich tuhadi wakhri dikh banaye.</p>
+            </div>
+            <div class="card">
+                <h3>Digital</h3>
+                <p>Latest technology de naal tuhade kamma nu asaan karda.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background: #ecf0f1;">
+        <div class="heading">
+            <h2>Sade Naal Gal Karo</h2>
+        </div>
+        <div class="contact-container">
+            <form>
+                <input type="text" placeholder="Tuhada Naam" required>
+                <input type="email" placeholder="Email Address" required>
+                <textarea rows="5" placeholder="Tuhada Message"></textarea>
+                <button type="submit" class="submit-btn">Message Bhejo</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Bvaide | Made with Passion</p>
+    </footer>
+
+</body>
+</html>
