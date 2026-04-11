@@ -1,56 +1,56 @@
-<section style="background-color: #ffffff; padding: 80px 20px; font-family: 'Garamond', serif;">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
     
-    <div style="text-align: center; margin-bottom: 60px;">
-        <h1 style="font-size: 40px; color: #1a1a1a; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; font-weight: 300;">Our Signature Collection</h1>
-        <p style="color: #b08d57; font-size: 16px; letter-spacing: 2px; font-family: 'Arial', sans-serif;">Handcrafted Elegance • 18K Gold Plated</p>
-        <div style="width: 80px; height: 1.5px; background: #b08d57; margin: 20px auto;"></div>
+    .luxury-store { font-family: 'Inter', sans-serif; background-color: #fff; color: #1a1a1a; padding: 60px 0; }
+    .brand-title { font-family: 'Playfair Display', serif; font-size: 42px; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; text-align: center; }
+    .gold-line { width: 60px; height: 1.5px; background: #b08d57; margin: 20px auto; }
+    .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .card { background: #fff; border: 1px solid #f0f0f0; transition: 0.4s ease; padding: 15px; border-radius: 4px; text-align: center; }
+    .card:hover { border-color: #b08d57; box-shadow: 0 10px 25px rgba(176,141,87,0.1); }
+    .card img { width: 100%; height: 320px; object-fit: cover; margin-bottom: 15px; border-radius: 2px; }
+    .cat-tag { font-size: 11px; color: #b08d57; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+    .price-tag { font-size: 18px; font-weight: 600; margin: 10px 0; }
+    .old-price { text-decoration: line-through; color: #bbb; font-size: 14px; margin-left: 10px; font-weight: 400; }
+    .buy-btn { width: 100%; background: #1a1a1a; color: #fff; border: none; padding: 12px; cursor: pointer; font-size: 13px; font-weight: 600; letter-spacing: 1px; transition: 0.3s; }
+    .buy-btn:hover { background: #b08d57; }
+</style>
+
+<div class="luxury-store">
+    <h1 class="brand-title">The Signature Collection</h1>
+    <p style="text-align: center; color: #b08d57; font-size: 14px; letter-spacing: 2px;">LUXURY • QUALITY • ELEGANCE</p>
+    <div class="gold-line"></div>
+
+    <div class="product-grid">
+        <div class="card">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" alt="Necklace">
+            <span class="cat-tag">Necklaces</span>
+            <h3 style="font-size: 18px; margin: 10px 0;">The Rose-Quartz Muse</h3>
+            <div class="price-tag">₹699 <span class="old-price">₹1,299</span></div>
+            <button class="buy-btn">ADD TO BAG</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=500" alt="Rings">
+            <span class="cat-tag">Rings</span>
+            <h3 style="font-size: 18px; margin: 10px 0;">Elite Gold Band</h3>
+            <div class="price-tag">₹499 <span class="old-price">₹899</span></div>
+            <button class="buy-btn">ADD TO BAG</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=500" alt="Bangles">
+            <span class="cat-tag">Bangles</span>
+            <h3 style="font-size: 18px; margin: 10px 0;">Royal Gold Kada</h3>
+            <div class="price-tag">₹899 <span class="old-price">₹1,599</span></div>
+            <button class="buy-btn">ADD TO BAG</button>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?auto=format&fit=crop&q=80&w=500" alt="Bracelets">
+            <span class="cat-tag">Bracelets</span>
+            <h3 style="font-size: 18px; margin: 10px 0;">Minimalist Charm</h3>
+            <div class="price-tag">₹599 <span class="old-price">₹1,199</span></div>
+            <button class="buy-btn">ADD TO BAG</button>
+        </div>
     </div>
-
-    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-
-        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" alt="Necklace" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
-            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Necklaces</span>
-            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">The Rose-Quartz Muse</h3>
-            <div style="margin-bottom: 15px;">
-                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹699</span>
-                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹1,299</span>
-            </div>
-            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
-        </div>
-
-        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
-            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=500" alt="Rings" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
-            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Rings</span>
-            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">Premium Gold Ring</h3>
-            <div style="margin-bottom: 15px;">
-                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹499</span>
-                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹899</span>
-            </div>
-            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
-        </div>
-
-        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
-            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=500" alt="Bangles" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
-            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Bangles</span>
-            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">Traditional Gold Kadas</h3>
-            <div style="margin-bottom: 15px;">
-                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹899</span>
-                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹1,599</span>
-            </div>
-            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
-        </div>
-
-        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
-            <img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?auto=format&fit=crop&q=80&w=500" alt="Bracelets" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
-            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Bracelets</span>
-            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">Luxury Charm Bracelet</h3>
-            <div style="margin-bottom: 15px;">
-                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹599</span>
-                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹1,199</span>
-            </div>
-            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
-        </div>
-
-    </div>
-</section>
+</div>
