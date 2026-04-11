@@ -1,559 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Bvaide Jewels | Modern Affordable Jewelry</title>
- <style>
- /* Professional Catalog Design */
- :root {
- --primary-color: #6C5CE7;
- --secondary-color: #FF6B6B;
- --accent-color: #00CEC9;
- --text-dark: #2D3436;
- --text-light: #636E72;
- --bg-light: #F5F6FA;
- --bg-white: #FFFFFF;
- }
-
- * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- }
-
- body {
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- line-height: 1.6;
- color: var(--text-dark);
- background: var(--bg-light);
- }
-
- /* Professional Header */
- header {
- background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
- color: white;
- padding: 1rem 0;
- box-shadow: 0 2px 10px rgba(0,0,0,0.1);
- position: sticky;
- top: 0;
- z-index: 1000;
- }
-
- .header-content {
- max-width: 1200px;
- margin: 0 auto;
- padding: 0 2rem;
- display: flex;
- justify-content: space-between;
- align-items: center;
- }
-
- .logo {
- font-size: 1.8rem;
- font-weight: bold;
- display: flex;
- align-items: center;
- gap: 0.5rem;
- }
-
- .logo::before {
- content: "💎";
- font-size: 2rem;
- }
-
- .nav-links {
- display: flex;
- gap: 2rem;
- list-style: none;
- }
-
- .nav-link {
- color: white;
- text-decoration: none;
- transition: opacity 0.3s;
- }
-
- .nav-link:hover {
- opacity: 0.8;
- }
-
- /* Professional Hero Section */
- .hero {
- background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/jewelry1/1920/600');
- background-size: cover;
- background-position: center;
- height: 60vh;
- display: flex;
- align-items: center;
- justify-content: center;
- margin-top: 80px;
- }
-
- .hero-content {
- text-align: center;
- color: white;
- padding: 0 2rem;
- max-width: 800px;
- }
-
- .hero-title {
- font-size: 3rem;
- font-weight: bold;
- margin-bottom: 1rem;
- text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
- }
-
- .hero-subtitle {
- font-size: 1.2rem;
- margin-bottom: 2rem;
- opacity: 0.95;
- }
-
- .cta-button {
- background: var(--accent-color);
- color: white;
- padding: 1rem 2rem;
- border-radius: 50px;
- text-decoration: none;
- font-weight: bold;
- transition: all 0.3s;
- display: inline-block;
- }
-
- .cta-button:hover {
- transform: translateY(-2px);
- box-shadow: 0 5px 20px rgba(0, 206, 201, 0.4);
- background: var(--primary-color);
- }
-
- /* Professional About Section */
- .about {
- padding: 4rem 2rem;
- background: var(--bg-white);
- }
-
- .container {
- max-width: 1200px;
- margin: 0 auto;
- }
-
- .about-title {
- text-align: center;
- font-size: 2.5rem;
- color: var(--primary-color);
- margin-bottom: 3rem;
- }
-
- .about-content {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
- gap: 3rem;
- }
-
- .about-card {
- text-align: center;
- padding: 2rem;
- background: var(--bg-light);
- border-radius: 15px;
- transition: transform 0.3s;
- }
-
- .about-card:hover {
- transform: translateY(-5px);
- }
-
- .about-card i {
- font-size: 3rem;
- margin-bottom: 1rem;
- color: var(--secondary-color);
- }
-
- .about-card h3 {
- font-size: 1.5rem;
- margin-bottom: 1rem;
- color: var(--text-dark);
- }
-
- /* Professional Product Catalog */
- .catalog-section {
- padding: 4rem 2rem;
- background: var(--bg-white);
- }
-
- .catalog-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
- gap: 2rem;
- margin-top: 3rem;
- }
-
- .product-card {
- background: var(--bg-white);
- border-radius: 15px;
- overflow: hidden;
- box-shadow: 0 5px 15px rgba(0,0,0,0.1);
- transition: all 0.3s;
- cursor: pointer;
- position: relative;
- }
-
- .product-card:hover {
- transform: translateY(-10px);
- box-shadow: 0 10px 30px rgba(0,0,0,0.15);
- }
-
- .product-badge {
- position: absolute;
- top: 10px;
- right: 10px;
- background: var(--secondary-color);
- color: white;
- padding: 0.3rem 0.8rem;
- border-radius: 20px;
- font-size: 0.8rem;
- font-weight: bold;
- }
-
- .product-image {
- height: 250px;
- background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
- display: flex;
- align-items: center;
- justify-content: center;
- font-size: 3rem;
- }
-
- .product-info {
- padding: 1.5rem;
- }
-
- .product-name {
- font-size: 1.2rem;
- font-weight: 600;
- color: var(--text-dark);
- margin-bottom: 0.5rem;
- }
-
- .product-features {
- display: flex;
- gap: 1rem;
- margin-bottom: 1rem;
- }
-
- .feature {
- color: var(--text-light);
- font-size: 0.9rem;
- }
-
- .product-price {
- font-size: 1.5rem;
- color: var(--primary-color);
- font-weight: bold;
- margin-bottom: 1rem;
- }
-
- .product-description {
- color: var(--text-light);
- font-size: 0.95rem;
- margin-bottom: 1.5rem;
- }
-
- .quick-contact {
- background: var(--primary-color);
- color: white;
- padding: 0.8rem 1.5rem;
- border-radius: 25px;
- text-decoration: none;
- display: inline-block;
- transition: all 0.3s;
- }
-
- .quick-contact:hover {
- background: var(--secondary-color);
- transform: translateY(-2px);
- }
-
- /* Professional Contact Section */
- .contact-section {
- padding: 4rem 2rem;
- background: var(--bg-white);
- }
-
- .contact-hero {
- text-align: center;
- margin-bottom: 3rem;
- }
-
- .contact-hero h2 {
- font-size: 2.5rem;
- color: var(--primary-color);
- margin-bottom: 1rem;
- }
-
- .contact-hero p {
- color: var(--text-light);
- font-size: 1.1rem;
- margin-bottom: 2rem;
- max-width: 600px;
- margin-left: auto;
- margin-right: auto;
- }
-
- .contact-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- gap: 3rem;
- }
-
- .contact-card {
- background: var(--bg-light);
- padding: 2rem;
- border-radius: 15px;
- text-align: center;
- transition: transform 0.3s;
- }
-
- .contact-card:hover {
- transform: translateY(-5px);
- }
-
- .contact-icon {
- width: 60px;
- height: 60px;
- background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-size: 1.5rem;
- margin-bottom: 1rem;
- }
-
- .contact-card h3 {
- color: var(--text-dark);
- margin-bottom: 1rem;
- }
-
- .contact-details {
- color: var(--text-light);
- line-height: 2;
- }
-
- /* Professional Features Section */
- .features-section {
- padding: 4rem 2rem;
- background: var(--bg-white);
- }
-
- .features-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- gap: 2rem;
- margin-top: 3rem;
- }
-
- .feature-card {
- background: var(--bg-light);
- padding: 2rem;
- border-radius: 15px;
- text-align: center;
- }
-
- .feature-icon {
- font-size: 2.5rem;
- margin-bottom: 1rem;
- color: var(--accent-color);
- }
-
- .feature-card h3 {
- color: var(--text-dark);
- margin-bottom: 1rem;
- }
-
- /* Professional Footer */
- footer {
- background: var(--text-dark);
- color: white;
- padding: 3rem 2rem 1rem;
- }
-
- .footer-content {
- max-width: 1200px;
- margin: 0 auto;
- }
-
- .footer-grid {
- display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
- gap: 2rem;
- margin-bottom: 2rem;
- }
-
- .footer-card h4 {
- color: white;
- margin-bottom: 1rem;
- }
-
- .footer-card p {
- color: var(--bg-light);
- line-height: 1.6;
- }
-
- .social-links {
- display: flex;
- gap: 1rem;
- margin-top: 1rem;
- }
-
- .social-link {
- color: white;
- font-size: 1.5rem;
- transition: color 0.3s;
- }
-
- .social-link:hover {
- color: var(--accent-color);
- }
-
- /* Instagram Banner */
- .instagram-banner {
- background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
- color: white;
- padding: 3rem 2rem;
- }
-
- .instagram-banner h2 {
- text-align: center;
- font-size: 2.5rem;
- margin-bottom: 1rem;
- }
-
- .instagram-banner p {
- text-align: center;
- opacity: 0.9;
- }
-
- .insta-link {
- display: inline-block;
- background: var(--accent-color);
- color: white;
- padding: 1rem 2rem;
- border-radius: 50px;
- text-decoration: none;
- font-weight: bold;
- transition: all 0.3s;
- margin-top: 1.5rem;
- }
-
- .insta-link:hover {
- background: var(--primary-color);
- transform: translateY(-2px);
- }
-
- /* Responsive Design */
- @media (max-width: 768px) {
- .hero-title {
- font-size: 2rem;
- }
- 
- .about-content {
- grid-template-columns: 1fr;
- }
- 
- .catalog-grid {
- grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
- }
- 
- .contact-grid {
- grid-template-columns: 1fr;
- }
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BVAIDE // Essential Jewels</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --black: #0a0a0a;
+            --white: #ffffff;
+            --cream: #fafafa;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596277022067-e9a65a3c9e6d?q=80&w=2070&auto=format&fit=crop') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 5rem;
+            letter-spacing: 12px;
+            margin-bottom: 10px;
+            animation: fadeInDown 1.5s ease-in;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        /* Brand Message Section */
+        .brand-message {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: var(--cream);
+        }
+
+        .brand-message p {
+            font-style: italic;
+            font-size: 1.6rem;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 20px;
+            flex-wrap: wrap;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .feat-box {
+            text-align: center;
+            padding: 20px;
+            transition: color 0.3s;
+        }
+
+        .feat-box:hover {
+            color: var(--gold);
+        }
+
+        /* Product Catalog (List Style) */
+        .shop-section {
+            padding: 100px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .shop-section h2 {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            letter-spacing: 5px;
+        }
+
+        .product-list-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 40px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        .product-list-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .product-img-wrapper {
+            flex: 1;
+            padding: 0 40px;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 400px;
+            background: #f0f0f0;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .product-list-item:hover .product-img {
+            transform: scale(1.05);
+        }
+
+        .product-info-wrapper {
+            flex: 1;
+            padding: 0 40px;
+        }
+
+        .product-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+        }
+
+        .product-desc {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .price {
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .buy-btn {
+            background: var(--black);
+            color: var(--white);
+            padding: 15px 35px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 70px 20px;
+            background-color: var(--cream);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            line-height: 1.6;
+        }
+
+        footer strong {
+            color: var(--black);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translate3d(0, -100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 100%, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; letter-spacing: 8px; }
+            .brand-message p { font-size: 1.3rem; }
+            .product-list-item { flex-direction: column !important; text-align: center; margin-bottom: 60px; }
+            .product-img-wrapper, .product-info-wrapper { padding: 0; margin-bottom: 20px; }
+            .product-img { height: 300px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Professional Header -->
-<header>
- <div class="header-content">
- <div class="logo">BVAIDE JEWELS</div>
- <nav>
- <ul class="nav-links">
- <li><a href="#home">Home</a></li>
- <li><a href="#about">About Us</a></li>
- <li><a href="#catalog">Collections</a></li>
- <li><a href="#contact">Contact</a></li>
- </ul>
- </nav>
- </div>
-</header>
+    <header>
+        <h1>BVAIDE</h1>
+        <p class="tagline">where elegance meets everyday</p>
+    </header>
 
-<!-- Professional Hero Section -->
-<section class="hero" id="home">
- <div class="hero-content">
- <h1>Modern Jewelry for Your Style</h1>
- <p>Affordable, Nickel-Free, 18KT Plated Jewelry - Perfect for Everyday Wear</p>
- <a href="#contact" class="cta-button">Get Your Beautiful Piece Today!</a>
- </div>
-</section>
+    <section class="brand-message">
+        <p>"Jewelry that stays with you, through every splash and every sweat. For the modern muse. Crafted for forever."</p>
+    </section>
 
-<!-- Professional About Section -->
-<section class="about" id="about">
- <div class="container">
- <h2 class="about-title">Why Choose Bvaide Jewels?</h2>
- <div class="about-content">
- <div class="about-card">
- <i>✨</i>
- <h3>Nickel-Free Safe</h3>
- <p>Perfect for sensitive skin - No allergic reactions, safe for daily wear</p>
- </div>
- <div class="about-card">
- <i>💎</i>
- <h3>18KT Gold Plated</h3>
- <p>Premium quality gold plating for long-lasting shine and durability</p>
- </div>
- <div class="about-card">
- <i>💰</i>
- <h3>Budget Friendly</h3>
- <p>Affordable luxury starting from just ₹399 - Quality at best prices</p>
- </div>
- </div>
- </div>
-</section>
+    <section class="features">
+        <div class="feat-box">✨ 18K GOLD PLATED</div>
+        <div class="feat-box">🌊 WATERPROOF</div>
+        <div class="feat-box">✨ ANTI-TARNISH</div>
+        <div class="feat-box">☁️ SKIN FRIENDLY</div>
+    </section>
 
-<!-- Professional Product Catalog -->
-<section class="catalog-section" id="catalog">
- <div class="container">
- <h2 class="about-title" style="text-align: center;">Our Collections</h2>
- <div class="catalog-grid">
- <!-- Product 1 -->
- <div class="product-card">
- <div class="product-badge">Trending</div>
- <div class="product-image">💍</div>
- <div class="product-info">
- <h3 class="product-name">Classic Gold Ring</h3>
- <p class="product-features">
- <span>✨ 18KT Plated</span>
- <span>💎 Nickel-Free</span>
- <span>🎁 Premium Box</span>
- </p>
- <p class="product-price">₹399</p>
- <p class="product-description">Perfect for office wear, lightweight and comfortable</p>
- <a href="tel:8360357167" class="quick-contact">Call Now!</a>
- </div>
- </div>
+    <section class="shop-section">
+        <h2>THE COLLECTION</h2>
+        
+        <div class="product-list">
+            <div class="product-list-item">
+                <div class="product-img-wrapper">
+                    <img src="https://via.placeholder.com/500x400?text=Chain+Photo" alt="Essential Gold Chain" class="product-img">
+                </div>
+                <div class="product-info-wrapper">
+                    <div class="product-title">ESSENTIAL GOLD CHAIN</div>
+                    <div class="product-desc">Your daily dash of luxury. Minimal, durable, and designed to shine with you.</div>
+                    <div class="price">₹999</div>
+                    <a href="https://wa.me/918360357167?text=Hi BVAIDE, I want to order the Essential Gold Chain" class="buy-btn">Order on WhatsApp</a>
+                </div>
+            </div>
 
- <!-- Product 2 -->
- <div class="product-card">
- <div class="product-image">💎</div>
- <div class="product-info">
- <h3 class="product-name">Diamond Necklace Set</h3>
- <p class="product-features">
- <span>✨ Party Wear</span>
- <span>💎 Elegant Design</span>
- <span>🎁 Gift Ready</span>
- </p>
- <p class="product-price">₹549</p>
- <p class="product-description">Stunning design perfect for special occasions</p>
- <a href="tel:8360357167" class="quick-contact">Call Now!</a>
- 
+            <div class="product-list-item">
+                <div class="product-img-wrapper">
+                    <img src="https://via.placeholder.com/500x400?text=Earrings+Photo" alt="Premium Hoop Earrings" class="product-img">
+                </div>
+                <div class="product-info-wrapper">
+                    <div class="product-title">PREMIUM HOOP EARRINGS</div>
+                    <div class="product-desc">Classical hoops that match every outfit and occasion. Light, anti-tarnish, and tarnish-proof.</div>
+                    <div class="price">₹799</div>
+                    <a href="https://wa.me/918360357167?text=Hi BVAIDE, I want to order the Premium Hoop Earrings" class="buy-btn">Order on WhatsApp</a>
+                </div>
+            </div>
+            
+             <div class="product-list-item">
+                <div class="product-img-wrapper">
+                    <img src="https://via.placeholder.com/500x400?text=Ring+Photo" alt="Minimal Gold Ring" class="product-img">
+                </div>
+                <div class="product-info-wrapper">
+                    <div class="product-title">MINIMAL GOLD RING</div>
+                    <div class="product-desc">The perfect finishing touch. Simple, sleek, and safe for everyday wear.</div>
+                    <div class="price">₹599</div>
+                    <a href="https://wa.me/918360357167?text=Hi BVAIDE, I want to order the Minimal Gold Ring" class="buy-btn">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>BVAIDE</strong> // Essential Jewels</p>
+        <p style="margin-top: 15px; color: #888; font-size: 0.8rem;">© 2024. All rights reserved. Registered under bvaide.in.</p>
+        <p style="margin-top: 5px; color: #888; font-size: 0.8rem;">We Ship Pan-India.</p>
+    </footer>
+
+</body>
+</html>
