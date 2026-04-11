@@ -3,90 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BVAIDE - Essential Jewels</title>
+    <title>BVAIDE - Luxury Anti-Tarnish Jewels</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Montserrat:wght@300;400;600&display=swap');
         
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; padding-bottom: 80px; color: #1a1a1a; }
+        body { margin: 0; padding: 0; background-color: #fff; font-family: 'Montserrat', sans-serif; color: #1a1a1a; padding-bottom: 80px; }
+
+        /* Step 1: Entry Logo & Classy Text */
+        #entry-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; z-index: 10000; transition: opacity 1s ease, visibility 1s ease; }
+        .entry-logo-wrap { display: flex; flex-direction: column; align-items: center; }
+        .entry-logo { width: 100px; height: 100px; background-color: #1a1a1a; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-family: 'Playfair Display', serif; color: #e6c27a; font-size: 50px; font-weight: 700; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 4px solid #b08d57; }
+        .entry-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 18px; color: #b08d57; letter-spacing: 1.5px; opacity: 0; animation: fadeInUp 1s forwards; animation-delay: 0.5s; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(-10px); } }
+        .show-body { overflow: hidden; }
+
+        /* Step 2: Main Website Structure */
+        #main-website { opacity: 0; transition: opacity 1s ease-in; }
+        #main-website.active { opacity: 1; }
         
-        /* Premium Header with YOUR LOGO */
-        .header { display: flex; flex-direction: column; align-items: center; padding: 20px; background: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 5px; }
-        .brand-tag { font-family: 'Playfair Display', serif; font-size: 14px; color: #b08d57; letter-spacing: 2px; text-transform: uppercase; }
-
-        /* Anti-Tarnish Banner */
-        .hero-banner { background: #001f3f; color: #e6c27a; padding: 40px 20px; text-align: center; border-bottom: 4px solid #b08d57; }
-        .hero-banner h1 { font-family: 'Playfair Display', serif; font-size: 28px; margin: 0; letter-spacing: 1px; }
-        .hero-banner p { font-size: 12px; margin-top: 10px; letter-spacing: 2px; color: #fff; opacity: 0.9; }
-
-        /* Featured Product - Your Pendant */
-        .section-title { font-family: 'Playfair Display', serif; font-size: 22px; padding: 30px 20px 10px; margin: 0; text-align: center; }
-        .pendant-box { background: #f9f9f9; margin: 20px; padding: 20px; border-radius: 15px; border: 1px solid #e0e0e0; display: flex; align-items: center; gap: 20px; }
-        .p-img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 2px solid #b08d57; }
-        .p-details { text-align: left; }
-        .p-price { font-size: 22px; font-weight: 700; color: #001f3f; }
-        .p-old { text-decoration: line-through; color: #bbb; font-size: 14px; margin-left: 10px; }
-        .badge { background: #b08d57; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
-
-        /* Product Grid */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .card { border: 1px solid #eee; border-radius: 10px; overflow: hidden; text-align: center; padding-bottom: 15px; }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
-        .card h3 { font-size: 14px; margin: 10px 0 5px; }
-        .card p { font-weight: 700; color: #b08d57; margin: 0; }
-
-        /* Bottom Nav */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #001f3f; display: flex; justify-content: space-around; padding: 15px 0; color: #e6c27a; font-size: 10px; }
-        .nav-item { text-align: center; color: #e6c27a; text-decoration: none; }
+        /* Header & Banner Slider (Placeholders) */
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .logo-text { font-weight: 700; font-size: 18px; color: #1a1a1a; text-transform: uppercase; letter-spacing: 2px; }
+        .header-icons { font-size: 20px; color: #555; display: flex; gap: 15px; }
         
-        /* Socials */
-        .social { text-align: center; padding: 40px 20px; background: #fdfdfd; border-top: 1px solid #eee; }
-        .social a { color: #001f3f; text-decoration: none; font-weight: 600; border-bottom: 1px solid #b08d57; }
+        .hero-banner { background: #000; color: #e6c27a; padding: 40px 20px; text-align: center; }
+        .hero-banner h1 { font-family: 'Playfair Display', serif; font-size: 26px; margin: 0; letter-spacing: 1px; }
+        .hero-banner p { font-size: 11px; color: #fff; margin: 8px 0 0; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Products Grid (Placeholders) */
+        .product-section-title { font-family: 'Playfair Display', serif; font-size: 22px; padding: 30px 20px 10px; margin: 0; text-align: center; color: #1a1a1a; }
+        .p-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 15px 20px; }
+        .p-card { border: 1px solid #eee; border-radius: 10px; overflow: hidden; text-align: center; }
+        .p-img { width: 100%; height: 180px; object-fit: cover; background-color: #f9f9f9; }
+        .p-info { padding: 12px; }
+        .p-tag { font-size: 9px; color: #b08d57; text-transform: uppercase; font-weight: 600; }
+        .p-name { font-size: 14px; font-weight: 500; color: #1a1a1a; margin: 5px 0 3px; }
+        .p-price-row { display: flex; justify-content: center; align-items: center; gap: 8px; }
+        .p-old { color: #bbb; text-decoration: line-through; font-size: 12px; }
+        .p-price { font-size: 15px; font-weight: 700; }
+
+        /* Your Pendant Highlight - Sone par Suhaga! */
+        .featured-pendant { background: #fdfaf0; margin: 25px 20px; padding: 20px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: 1px solid #f3ebd6; }
+        .fp-img-wrap { width: 120px; height: 120px; border-radius: 10px; border: 2px solid #b08d57; }
+        .fp-img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+        .fp-details { flex: 1; text-align: left; }
+        .fp-name { font-family: 'Playfair Display', serif; font-size: 17px; margin: 5px 0; color: #1a1a1a; }
+        .fp-price { font-size: 19px; font-weight: 700; color: #1a1a1a; }
+        .fp-old { font-size: 13px; color: #bbb; text-decoration: line-through; font-weight: 400; margin-left: 8px; }
+        .badge { background: #b08d57; color: #fff; font-size: 9px; padding: 4px 8px; border-radius: 4px; display: inline-block; font-weight: 600; text-transform: uppercase; margin-bottom: 5px; }
+
+        /* Trust Section */
+        .trust-section { background-color: #fcfcfc; color: #555; padding: 40px 20px; text-align: center; margin-top: 30px; border-top: 10px solid #f9f9f9; }
+        .trust-section h2 { font-family: 'Playfair Display', serif; font-size: 20px; margin-bottom: 25px; color: #1a1a1a; }
+        .trust-item { margin-bottom: 20px; }
+        .trust-icon { font-size: 22px; color: #b08d57; margin-bottom: 5px; }
+        .trust-title { font-weight: 600; font-size: 14px; }
+        .trust-desc { font-size: 12px; line-height: 1.6; max-width: 300px; margin: 5px auto 0; }
+
+        /* Social Section */
+        .social-section { text-align: center; padding: 40px 20px; background: #fff; }
+        .social-section p { font-size: 13px; }
+        .social-link { color: #000; text-decoration: none; font-weight: 600; border-bottom: 1px solid #b08d57; }
+        .social-link span { color: #b08d57; margin-right: 5px; }
+
+        /* Bottom Fixed Navigation */
+        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; box-shadow: 0 -3px 15px rgba(0,0,0,0.03); z-index: 1000; }
+        .nav-item { text-align: center; color: #aaa; text-decoration: none; font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-item.active { color: #1a1a1a; }
+        .nav-item i { font-size: 22px; display: block; margin-bottom: 5px; }
     </style>
 </head>
-<body>
+<body class="show-body">
 
-    <header class="header">
-        <img src="https://i.ibb.co/LzNf9F8/bvaide-logo.png" alt="BVAIDE Logo" class="logo-img">
-        <div class="brand-tag">Essential Jewels</div>
-    </header>
-
-    <div class="hero-banner">
-        <h1>ANTI-TARNISH COLLECTION</h1>
-        <p>Jewelry that lasts a lifetime.</p>
-    </div>
-
-    <h2 class="section-title">Editor's Pick</h2>
-    <div class="pendant-box">
-        <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" class="p-img">
-        <div class="p-details">
-            <div class="badge">ANTI-TARNISH</div>
-            <h3 style="margin:0 0 5px 0;">Rose-Quartz Muse</h3>
-            <div class="p-price">₹799 <span class="p-old">₹1,199</span></div>
-            <button style="margin-top:15px; background:#001f3f; color:#e6c27a; border:none; padding:10px 20px; border-radius:5px; font-weight:600;">BUY NOW</button>
+    <div id="entry-screen">
+        <div class="entry-logo-wrap">
+            <div class="entry-logo">B</div>
+            <div class="entry-text">"Beauty, Redefined."</div>
         </div>
     </div>
 
-    <h2 class="section-title">Signature Pieces</h2>
-    <div class="grid">
-        <div class="card"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"><h3>Gold Rings</h3><p>₹499</p></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"><h3>Royal Bangles</h3><p>₹899</p></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?w=400"><h3>Bracelets</h3><p>₹599</p></div>
-        <div class="card"><img src="https://images.unsplash.com/photo-1535633302704-b042c0522dca?w=400"><h3>Hoop Earrings</h3><p>₹699</p></div>
+    <div id="main-website">
+        
+        <header class="header">
+            <span style="font-size: 24px;">☰</span>
+            <div class="logo-text">BVAIDE</div>
+            <div class="header-icons">
+                <span>🔍</span>
+                <span>🛒</span>
+            </div>
+        </header>
+
+        <div class="hero-banner">
+            <h1>New Arrivals</h1>
+            <p>Your Anti-Tarnish Jewelry Destination</p>
+        </div>
+
+        <h2 class="product-section-title">Special Offer</h2>
+        <div class="featured-pendant">
+            <div class="fp-img-wrap">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" class="fp-img" alt="Pendant with Pink Stone">
+            </div>
+            <div class="fp-details">
+                <div class="badge">ANTI-TARNISH</div>
+                <h3 class="fp-name">The Pink Muse Pendant</h3>
+                <div class="p-price-row" style="justify-content: left;">
+                    <span class="fp-price">₹799</span>
+                    <span class="fp-old">₹1,199</span>
+                </div>
+                <button style="margin-top:10px; background:#1a1a1a; color:#fff; border:none; padding:8px 20px; border-radius:5px; font-weight:600;">Shop Now</button>
+            </div>
+        </div>
+
+        <h2 class="product-section-title">Shop Our Collections</h2>
+        <div class="p-grid">
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"><div class="p-info"><span class="p-tag">Rings</span><p class="p-name">Product Name</p><div class="p-price-row"><span class="p-old">₹899</span><span class="p-price">₹499</span></div></div></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"><div class="p-info"><span class="p-tag">Bangles</span><p class="p-name">Product Name</p><div class="p-price-row"><span class="p-old">₹1,599</span><span class="p-price">₹899</span></div></div></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?w=400"><div class="p-info"><span class="p-tag">Bracelets</span><p class="p-name">Product Name</p><div class="p-price-row"><span class="p-old">₹1,199</span><span class="p-price">₹599</span></div></div></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1535633302704-b042c0522dca?w=400"><div class="p-info"><span class="p-tag">Earrings</span><p class="p-name">Product Name</p><div class="p-price-row"><span class="p-old">₹1,299</span><span class="p-price">₹699</span></div></div></div>
+        </div>
+
+        <div class="trust-section">
+            <h2>The Bvaide Promise</h2>
+            <div class="trust-item"><div class="trust-icon">✨</div><div class="trust-title">Skin Friendly</div><p class="trust-desc">Made with hypoallergenic, pure metals. No nickel, no lead.</p></div>
+            <div class="trust-item"><div class="trust-icon">🔒</div><div class="trust-title">Anti-Tarnish</div><p class="trust-desc">Long-lasting 18K gold plating designed to resist daily wear.</p></div>
+            <div class="trust-item"><div class="trust-icon">🚚</div><div class="trust-title">Fast Delivery</div><p class="trust-desc">Secure and quick shipping across India.</p></div>
+        </div>
+
+        <div class="social-section">
+            <p>Find your long-life treasure with us.</p>
+            <a href="https://instagram.com/bvaide.in" target="_blank" class="social-link"><span>📸</span> Follow us @bvaide.in</a>
+        </div>
+
+        <nav class="bottom-nav">
+            <a href="#" class="nav-item active">🏠<br>Home</a>
+            <a href="https://wa.me/YOUR_NUMBER" target="_blank" class="nav-item">💬<br>Shop</a> <a href="#" class="nav-item">❤️<br>Wishlist</a>
+            <a href="#" class="nav-item">👤<br>About Us</a>
+        </nav>
+        
     </div>
 
-    <div class="social">
-        <p>Pure intent, premium quality.</p>
-        <a href="https://instagram.com/bvaide.in">Follow us @bvaide.in</a>
-    </div>
-
-    <nav class="bottom-nav">
-        <div class="nav-item">🏠<br>HOME</div>
-        <div class="nav-item">💎<br>SHOP</div>
-        <div class="nav-item">❤️<br>WISHLIST</div>
-        <div class="nav-item">👤<br>PROFILE</div>
-    </nav>
-
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('entry-screen').style.opacity = '0';
+                document.getElementById('entry-screen').style.visibility = 'hidden';
+                document.getElementById('main-website').classList.add('active');
+                document.body.classList.remove('show-body');
+            }, 3000); // Fades out after 3 seconds
+        });
+    </script>
 </body>
-    </html>
-    
+</html>
