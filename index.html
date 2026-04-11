@@ -3,97 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bvaide - Luxury Jewelry</title>
+    <title>BVAIDE - Essential Jewels</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap');
         
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fdfdfd; padding-bottom: 70px; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background: #fff; padding-bottom: 80px; color: #1a1a1a; }
         
-        /* Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; background: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        .logo { font-weight: 700; letter-spacing: 2px; font-size: 20px; }
-        .header-icons span { margin-left: 15px; font-size: 18px; cursor: pointer; }
+        /* Premium Header with YOUR LOGO */
+        .header { display: flex; flex-direction: column; align-items: center; padding: 20px; background: #fff; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 5px; }
+        .brand-tag { font-family: 'Playfair Display', serif; font-size: 14px; color: #b08d57; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* Main Slider */
-        .hero-slider { width: 100%; height: 200px; background: #eee; overflow: hidden; position: relative; }
-        .slider-img { width: 100%; height: 100%; object-fit: cover; background: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&q=80&w=1000') no-repeat center; }
-        .dots { position: absolute; bottom: 10px; width: 100%; text-align: center; }
-        .dot { height: 8px; width: 8px; background: #bbb; border-radius: 50%; display: inline-block; margin: 0 4px; }
-        .dot.active { background: #b08d57; width: 20px; border-radius: 10px; }
+        /* Anti-Tarnish Banner */
+        .hero-banner { background: #001f3f; color: #e6c27a; padding: 40px 20px; text-align: center; border-bottom: 4px solid #b08d57; }
+        .hero-banner h1 { font-family: 'Playfair Display', serif; font-size: 28px; margin: 0; letter-spacing: 1px; }
+        .hero-banner p { font-size: 12px; margin-top: 10px; letter-spacing: 2px; color: #fff; opacity: 0.9; }
 
-        /* Category Banners - Pyrite Style */
-        .cat-container { padding: 15px; }
-        .cat-banner { background: #000; border-radius: 12px; margin-bottom: 15px; display: flex; overflow: hidden; position: relative; border: 2px solid #b08d57; }
-        .cat-img { width: 50%; height: 150px; object-fit: cover; }
-        .cat-info { width: 50%; padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; color: white; }
-        .cat-info h3 { margin: 0; font-size: 20px; letter-spacing: 1px; }
-        .cat-info p { font-size: 10px; color: #b08d57; margin: 5px 0 15px; }
-        .btn-explore { background: #e6c27a; color: #000; border: none; padding: 6px 15px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; }
+        /* Featured Product - Your Pendant */
+        .section-title { font-family: 'Playfair Display', serif; font-size: 22px; padding: 30px 20px 10px; margin: 0; text-align: center; }
+        .pendant-box { background: #f9f9f9; margin: 20px; padding: 20px; border-radius: 15px; border: 1px solid #e0e0e0; display: flex; align-items: center; gap: 20px; }
+        .p-img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 2px solid #b08d57; }
+        .p-details { text-align: left; }
+        .p-price { font-size: 22px; font-weight: 700; color: #001f3f; }
+        .p-old { text-decoration: line-through; color: #bbb; font-size: 14px; margin-left: 10px; }
+        .badge { background: #b08d57; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; }
 
-        /* About Section - Pyrite Style Text */
-        .about-section { padding: 30px 20px; border-top: 8px solid #f5f5f5; }
-        .about-section h2 { font-size: 18px; color: #333; margin-bottom: 15px; border-bottom: 2px solid #b08d57; display: inline-block; padding-bottom: 5px; }
-        .about-section p { font-size: 14px; line-height: 1.6; color: #666; text-align: justify; }
+        /* Product Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
+        .card { border: 1px solid #eee; border-radius: 10px; overflow: hidden; text-align: center; padding-bottom: 15px; }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card h3 { font-size: 14px; margin: 10px 0 5px; }
+        .card p { font-weight: 700; color: #b08d57; margin: 0; }
 
-        /* Bottom Navigation */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); }
-        .nav-item { text-align: center; color: #888; font-size: 10px; text-decoration: none; }
-        .nav-item.active { color: #b08d57; }
-        .nav-item i { font-size: 20px; display: block; margin-bottom: 4px; }
+        /* Bottom Nav */
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #001f3f; display: flex; justify-content: space-around; padding: 15px 0; color: #e6c27a; font-size: 10px; }
+        .nav-item { text-align: center; color: #e6c27a; text-decoration: none; }
+        
+        /* Socials */
+        .social { text-align: center; padding: 40px 20px; background: #fdfdfd; border-top: 1px solid #eee; }
+        .social a { color: #001f3f; text-decoration: none; font-weight: 600; border-bottom: 1px solid #b08d57; }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <span style="font-size: 24px;">☰</span>
-        <div class="logo">BVAIDE FASHION</div>
-        <div class="header-icons">
-            <span>🔍</span>
-            <span>🔔</span>
-            <span>🛒</span>
-        </div>
+        <img src="https://i.ibb.co/LzNf9F8/bvaide-logo.png" alt="BVAIDE Logo" class="logo-img">
+        <div class="brand-tag">Essential Jewels</div>
     </header>
 
-    <div class="hero-slider">
-        <div class="slider-img"></div>
-        <div class="dots">
-            <span class="dot"></span>
-            <span class="dot active"></span>
-            <span class="dot"></span>
+    <div class="hero-banner">
+        <h1>ANTI-TARNISH COLLECTION</h1>
+        <p>Jewelry that lasts a lifetime.</p>
+    </div>
+
+    <h2 class="section-title">Editor's Pick</h2>
+    <div class="pendant-box">
+        <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" class="p-img">
+        <div class="p-details">
+            <div class="badge">ANTI-TARNISH</div>
+            <h3 style="margin:0 0 5px 0;">Rose-Quartz Muse</h3>
+            <div class="p-price">₹799 <span class="p-old">₹1,199</span></div>
+            <button style="margin-top:15px; background:#001f3f; color:#e6c27a; border:none; padding:10px 20px; border-radius:5px; font-weight:600;">BUY NOW</button>
         </div>
     </div>
 
-    <div class="cat-container">
-        <div class="cat-banner">
-            <img src="https://images.unsplash.com/photo-1535633302704-b042c0522dca?auto=format&fit=crop&q=80&w=400" class="cat-img">
-            <div class="cat-info">
-                <h3>Earrings</h3>
-                <p>Exclusive Collections</p>
-                <button class="btn-explore">Explore More</button>
-            </div>
-        </div>
-
-        <div class="cat-banner">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" class="cat-img">
-            <div class="cat-info">
-                <h3>Necklace</h3>
-                <p>Exclusive Collections</p>
-                <button class="btn-explore" onclick="alert('Viewing Rose-Quartz Muse & More')">Explore More</button>
-            </div>
-        </div>
+    <h2 class="section-title">Signature Pieces</h2>
+    <div class="grid">
+        <div class="card"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"><h3>Gold Rings</h3><p>₹499</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"><h3>Royal Bangles</h3><p>₹899</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?w=400"><h3>Bracelets</h3><p>₹599</p></div>
+        <div class="card"><img src="https://images.unsplash.com/photo-1535633302704-b042c0522dca?w=400"><h3>Hoop Earrings</h3><p>₹699</p></div>
     </div>
 
-    <div class="about-section">
-        <h2>Bvaide Fashion - Luxury Wholesale</h2>
-        <p><strong>Bvaide Fashion</strong> is your premium destination for high-quality, anti-tarnish imitation jewellery. Based on a legacy of craftsmanship, we offer a wide range of Korean earrings, 18K gold-plated necklaces, and minimalist bracelets.</p>
-        <p>We cater to resellers and luxury seekers alike, ensuring that every piece meets the highest standards of durability and style. Choose Bvaide for timeless elegance that fits your budget.</p>
+    <div class="social">
+        <p>Pure intent, premium quality.</p>
+        <a href="https://instagram.com/bvaide.in">Follow us @bvaide.in</a>
     </div>
 
     <nav class="bottom-nav">
-        <a href="#" class="nav-item active">🏠<br>Home</a>
-        <a href="#" class="nav-item">📦<br>Orders</a>
-        <a href="#" class="nav-item">❤️<br>Wishlist</a>
-        <a href="#" class="nav-item">👤<br>About Us</a>
+        <div class="nav-item">🏠<br>HOME</div>
+        <div class="nav-item">💎<br>SHOP</div>
+        <div class="nav-item">❤️<br>WISHLIST</div>
+        <div class="nav-item">👤<br>PROFILE</div>
     </nav>
 
 </body>
