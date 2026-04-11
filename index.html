@@ -1,333 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BVAIDE // Essential Jewels</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #D4AF37;
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --cream: #fafafa;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--white);
-            color: var(--black);
-            overflow-x: hidden;
-        }
-
-        /* Hero Section */
-        header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1596277022067-e9a65a3c9e6d?q=80&w=2070&auto=format&fit=crop') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-            padding: 20px;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: 5rem;
-            letter-spacing: 12px;
-            margin-bottom: 10px;
-            animation: fadeInDown 1.5s ease-in;
-        }
-
-        .tagline {
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-        }
-
-        /* Brand Message Section */
-        .brand-message {
-            padding: 100px 20px;
-            text-align: center;
-            background-color: var(--cream);
-        }
-
-        .brand-message p {
-            font-style: italic;
-            font-size: 1.6rem;
-            max-width: 900px;
-            margin: 0 auto;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        /* Features Section */
-        .features {
-            display: flex;
-            justify-content: space-around;
-            background: var(--black);
-            color: var(--white);
-            padding: 60px 20px;
-            flex-wrap: wrap;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .feat-box {
-            text-align: center;
-            padding: 20px;
-            transition: color 0.3s;
-        }
-
-        .feat-box:hover {
-            color: var(--gold);
-        }
-
-        /* Product Catalog (List Style) */
-        .shop-section {
-            padding: 100px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .shop-section h2 {
-            text-align: center;
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            letter-spacing: 5px;
-        }
-
-        .product-list-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 80px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 40px;
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        .product-list-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        .product-img-wrapper {
-            flex: 1;
-            padding: 0 40px;
-        }
-
-        .product-img {
-            width: 100%;
-            height: 400px;
-            background: #f0f0f0;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .product-list-item:hover .product-img {
-            transform: scale(1.05);
-        }
-
-        .product-info-wrapper {
-            flex: 1;
-            padding: 0 40px;
-        }
-
-        .product-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            letter-spacing: 3px;
-        }
-
-        .product-desc {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .price {
-            color: var(--gold);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        .buy-btn {
-            background: var(--black);
-            color: var(--white);
-            padding: 15px 35px;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-        }
-
-        .buy-btn:hover {
-            background-color: var(--gold);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 70px 20px;
-            background-color: var(--cream);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            line-height: 1.6;
-        }
-
-        footer strong {
-            color: var(--black);
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translate3d(0, -100%, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translate3d(0, 100%, 0);
-            }
-            to {
-                opacity: 1;
-                transform: translate3d(0, 0, 0);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; letter-spacing: 8px; }
-            .brand-message p { font-size: 1.3rem; }
-            .product-list-item { flex-direction: column !important; text-align: center; margin-bottom: 60px; }
-            .product-img-wrapper, .product-info-wrapper { padding: 0; margin-bottom: 20px; }
-            .product-img { height: 300px; }
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <h1>BVAIDE</h1>
-        <p class="tagline">where elegance meets everyday</p>
-    </header>
-
-    <section class="brand-message">
-        <p>"Jewelry that stays with you, through every splash and every sweat. For the modern muse. Crafted for forever."</p>
-    </section>
-
-    <section class="features">
-        <div class="feat-box">✨ 18K GOLD PLATED</div>
-        <div class="feat-box">🌊 WATERPROOF</div>
-        <div class="feat-box">✨ ANTI-TARNISH</div>
-        <div class="feat-box">☁️ SKIN FRIENDLY</div>
-    </section>
-
-    <section class="shop-section">
-        <h2>THE COLLECTION</h2>
-        
-        <div class="product-list">
-            <div class="product-list-item">
-                <div class="product-img-wrapper">
-                    <img src="https://via.placeholder.com/500x400?text=Chain+Photo" alt="Essential Gold Chain" class="product-img">
-                </div>
-                <div class="product-info-wrapper">
-                    <div class="product-title">ESSENTIAL GOLD CHAIN</div>
-                    <div class="product-desc">Your daily dash of luxury. Minimal, durable, and designed to shine with you.</div>
-                    <div class="price">₹999</div>
-                    <a href="https://wa.me/918360357167?text=Hi BVAIDE, I want to order the Essential Gold Chain" class="buy-btn">Order on WhatsApp</a>
-                </div>
-            </div>
-
-            <div class="product-list-item">
-                <div class="product-img-wrapper">
-                    <img src="https://via.placeholder.com/500x400?text=Earrings+Photo" alt="Premium Hoop Earrings" class="product-img">
-                </div>
-                <div class="product-info-wrapper">
-                    <div class="product-title">PREMIUM HOOP EARRINGS</div>
-                    <div class="product-desc">Classical hoops that match every outfit and occasion. Light, anti-tarnish, and tarnish-proof.</div>
-                    <div class="price">₹799</div>
-                    <a href="https://wa.me/918360357167?text=Hi BVAIDE, I want to order the Premium Hoop Earrings" class="buy-btn">Order on WhatsApp</a>
-                </div>
-            </div>
-            
-             <div class="product-list-item">
-                <div class="product-img-wrapper">
-                    <img src="https://via.placeholder.com/500x400?text=Ring+Photo" alt="Minimal Gold Ring" class="product-img">
-                </div>
-                <div class="product-info-wrapper">
-                    <div class="product-title">MINIMAL GOLD RING</div>
-                    <div class="product-desc">The perfect finishing touch. Simple, sleek, and safe for everyday wear.</div>
-                    <div class="price">₹599</div>
-                    <a href="https://wa.me/918360357167?text=Hi BVAIDE, I want to order the Minimal Gold Ring" class="buy-btn">Order on WhatsApp</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p><strong>BVAIDE</strong> // Essential Jewels</p>
-        <p style="margin-top: 15px; color: #888; font-size: 0.8rem;">© 2024. All rights reserved. Registered under bvaide.in.</p>
-        <p style="margin-top: 5px; color: #888; font-size: 0.8rem;">We Ship Pan-India.</p>
-    </footer>
-
-</body>
-</html>
-<div id="new-pendant-section" style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: #fff; padding: 40px 20px;">
-    <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 30px; align-items: center; border: 1px solid #f0f0f0; border-radius: 20px; padding: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.05);">
-        
-        <div style="flex: 1; min-width: 320px;">
-            <img src="https://lh3.googleusercontent.com/d/1XyO6V9y_9l_z_r_R_V_R_v_R_V_R_V_R" alt="Rose-Quartz Muse Pendant" style="width: 100%; border-radius: 15px; display: block; object-fit: cover;">
-            <div style="display: flex; gap: 10px; margin-top: 15px; justify-content: center;">
-                <div style="width: 60px; height: 6px; background: #b08d57; border-radius: 10px;"></div>
-                <div style="width: 20px; height: 6px; background: #eee; border-radius: 10px;"></div>
-                <div style="width: 20px; height: 6px; background: #eee; border-radius: 10px;"></div>
-            </div>
-        </div>
-
-        <div style="flex: 1; min-width: 320px; padding: 0 10px;">
-            <span style="background: #fff0f5; color: #d63384; padding: 5px 12px; border-radius: 50px; font-size: 12px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">New Arrival</span>
-            
-            <h2 style="font-size: 32px; color: #222; margin: 15px 0 10px; font-weight: 600;">The Rose-Quartz Muse Pendant</h2>
-            <p style="color: #666; font-size: 16px; margin-bottom: 20px; line-height: 1.5;">Premium 18K Gold Plated necklace featuring a stunning soft-pink gemstone. Handcrafted for perfection.</p>
-            
-            <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px;">
-
-            <div style="margin-bottom: 25px;">
-                <span style="font-size: 36px; font-weight: 700; color: #b08d57;">₹699</span>
-                <span style="text-decoration: line-through; color: #bbb; font-size: 20px; margin-left: 15px;">₹1,299</span>
-                <div style="color: #28a745; font-size: 14px; font-weight: 600; margin-top: 5px;">You Save ₹600 (45% OFF)</div>
-            </div>
-
-            <ul style="padding: 0; margin-bottom: 30px; list-style: none; color: #555; font-size: 14px;">
-                <li style="margin-bottom: 8px;">✨ 18K Gold Plated Stainless Steel</li>
-                <li style="margin-bottom: 8px;">💎 High-Grade Magenta Gemstone</li>
-                <li style="margin-bottom: 8px;">🔗 Includes 18-inch Rope Chain</li>
-            </ul>
-
-            <button onclick="alert('Order received! We will contact you on WhatsApp.')" style="width: 100%; background: #222; color: #fff; border: none; padding: 18px; font-size: 18px; font-weight: bold; border-radius: 12px; cursor: pointer; transition: transform 0.2s ease;">
-                BUY NOW - ₹699
-            </button>
-            
-            <p style="text-align: center; color: #888; font-size: 13px; margin-top: 15px;">🔒 Secure Checkout | Cash on Delivery Available</p>
-        </div>
+<section style="background-color: #ffffff; padding: 80px 20px; font-family: 'Garamond', serif;">
+    
+    <div style="text-align: center; margin-bottom: 60px;">
+        <h1 style="font-size: 40px; color: #1a1a1a; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; font-weight: 300;">Our Signature Collection</h1>
+        <p style="color: #b08d57; font-size: 16px; letter-spacing: 2px; font-family: 'Arial', sans-serif;">Handcrafted Elegance • 18K Gold Plated</p>
+        <div style="width: 80px; height: 1.5px; background: #b08d57; margin: 20px auto;"></div>
     </div>
-</div>
+
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+
+        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
+            <img src="http://googleusercontent.com/image_collection/image_retrieval/14205933149837762269_0" alt="Necklace" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
+            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Necklaces</span>
+            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">The Rose-Quartz Muse</h3>
+            <div style="margin-bottom: 15px;">
+                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹699</span>
+                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹1,299</span>
+            </div>
+            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=500" alt="Rings" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
+            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Rings</span>
+            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">Premium Gold Ring</h3>
+            <div style="margin-bottom: 15px;">
+                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹499</span>
+                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹899</span>
+            </div>
+            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=500" alt="Bangles" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
+            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Bangles</span>
+            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">Traditional Gold Kadas</h3>
+            <div style="margin-bottom: 15px;">
+                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹899</span>
+                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹1,599</span>
+            </div>
+            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
+        </div>
+
+        <div style="background: #fff; border: 1px solid #f2f2f2; padding: 15px; border-radius: 5px; text-align: center;">
+            <img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?auto=format&fit=crop&q=80&w=500" alt="Bracelets" style="width: 100%; height: 350px; object-fit: cover; margin-bottom: 15px;">
+            <span style="font-size: 11px; color: #b08d57; letter-spacing: 1px; text-transform: uppercase;">Bracelets</span>
+            <h3 style="font-size: 19px; color: #222; margin: 10px 0;">Luxury Charm Bracelet</h3>
+            <div style="margin-bottom: 15px;">
+                <span style="font-size: 18px; color: #1a1a1a; font-weight: bold;">₹599</span>
+                <span style="text-decoration: line-through; color: #bbb; margin-left: 10px; font-size: 14px;">₹1,199</span>
+            </div>
+            <button style="background: #1a1a1a; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-size: 13px; letter-spacing: 1px; font-weight: bold;">ADD TO CART</button>
+        </div>
+
+    </div>
+</section>
