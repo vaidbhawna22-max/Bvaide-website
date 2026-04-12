@@ -3,205 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BVAIDE - Essential Jewels</title>
+    <title>BVAIDE | Necklaces Collection</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&family=Montserrat:wght@300;400;600;700&display=swap');
+        body { font-family: 'Helvetica Neue', sans-serif; margin: 0; background-color: #fff; color: #1a1a1a; }
         
-        body { margin: 0; padding: 0; background-color: #fff; font-family: 'Montserrat', sans-serif; color: #001f3f; padding-bottom: 80px; overflow-x: hidden; }
+        /* Professional Header */
+        header { padding: 20px; text-align: center; border-bottom: 1px solid #f0f0f0; background: #fff; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-size: 26px; font-weight: bold; letter-spacing: 6px; color: #001f3f; text-transform: uppercase; }
 
-        /* Splash Screen (Logo Entry) */
-        #splash { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: 0.8s ease-in-out; }
-        .splash-logo { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #b08d57; margin-bottom: 20px; animation: scaleUp 1s forwards; }
-        .splash-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: #b08d57; opacity: 0; animation: fadeIn 1s forwards 0.5s; }
+        /* Navigation Menu */
+        nav.main-menu { display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #f9f9f9; font-size: 13px; font-weight: 600; letter-spacing: 1px; }
+        nav.main-menu a { text-decoration: none; color: #555; text-transform: uppercase; }
+        nav.main-menu a.active { color: #001f3f; border-bottom: 2px solid #001f3f; padding-bottom: 5px; }
 
-        @keyframes scaleUp { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-        @keyframes fadeIn { to { opacity: 1; } }
+        /* Category Header */
+        .category-info { text-align: center; padding: 40px 20px; background: #fafafa; }
+        .category-info h1 { font-size: 22px; font-weight: 400; letter-spacing: 3px; margin: 0; }
+        .category-info p { font-size: 12px; color: #888; margin-top: 10px; }
 
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 100; }
-        .nav-logo { width: 45px; height: 45px; border-radius: 50%; border: 2px solid #b08d57; }
-        .brand-name { font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 3px; font-size: 18px; }
+        /* Professional Product Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
-        /* Hero Banner */
-        .hero { background: #001f3f; color: #e6c27a; padding: 50px 20px; text-align: center; border-bottom: 5px solid #b08d57; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 28px; margin: 0; }
-        .hero p { font-size: 12px; letter-spacing: 2px; color: #fff; margin-top: 10px; }
+        .product-card { background: #fff; text-align: left; position: relative; }
+        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #f4f4f4; border-radius: 4px; }
+        
+        .product-details { padding: 12px 5px; }
+        .product-tag { font-size: 10px; color: #bca05d; font-weight: bold; margin-bottom: 5px; display: block; }
+        .product-title { font-size: 14px; font-weight: 500; margin: 0; color: #222; }
+        
+        .price-box { margin-top: 8px; font-size: 15px; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 13px; margin-right: 8px; }
+        .new-price { font-weight: 700; color: #000; }
 
-        /* Featured: Pink Muse Pendant */
-        .special-box { background: #fdfaf0; margin: 25px 15px; padding: 20px; border-radius: 20px; display: flex; align-items: center; gap: 15px; border: 1px solid #e6c27a; }
-        .p-img-box { width: 130px; height: 130px; overflow: hidden; border-radius: 12px; border: 2px solid #b08d57; }
-        .p-img-box img { width: 100%; height: 100%; object-fit: cover; }
-        .details h2 { font-family: 'Playfair Display', serif; font-size: 18px; margin: 5px 0; }
-        .price-row { display: flex; align-items: center; gap: 10px; }
-        .old-price { text-decoration: line-through; color: #aaa; font-size: 14px; }
-        .new-price { color: #001f3f; font-weight: 700; font-size: 18px; }
-        .tarnish-tag { background: #b08d57; color: #fff; font-size: 10px; padding: 3px 8px; border-radius: 5px; font-weight: 600; }
+        /* Floating WhatsApp Button */
+        .buy-btn { display: block; width: 100%; background: #001f3f; color: #fff; text-align: center; padding: 10px 0; text-decoration: none; font-size: 12px; font-weight: 600; margin-top: 10px; border-radius: 2px; }
 
-        /* Categories Section */
-        .category-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .cat-card { border: 1px solid #eee; border-radius: 15px; overflow: hidden; text-align: center; padding-bottom: 10px; }
-        .cat-card img { width: 100%; height: 150px; object-fit: cover; }
-        .cat-card h3 { font-size: 14px; margin: 10px 0; font-weight: 600; }
-
-        /* Trust Points */
-        .trust { text-align: center; padding: 30px 20px; background: #f9f9f9; }
-        .trust-item { margin-bottom: 15px; font-size: 13px; }
-
-        /* Bottom Navigation */
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: #fff; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; box-shadow: 0 -5px 15px rgba(0,0,0,0.05); }
-        .nav-item { text-align: center; text-decoration: none; color: #888; font-size: 10px; font-weight: 600; }
-        .nav-item.active { color: #b08d57; }
-        .nav-item span { font-size: 22px; display: block; margin-bottom: 3px; }
-
-        /* Buy Now Button */
-        .buy-btn { background: #001f3f; color: #e6c27a; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 700; margin-top: 10px; cursor: pointer; width: 100%; }
+        @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
     </style>
 </head>
 <body>
 
-    <div id="splash">
-        <img src="https://i.ibb.co/LzNf9F8/bvaide-logo.png" class="splash-logo" alt="BVAIDE">
-        <div class="splash-text">"Beauty, Redefined."</div>
-    </div>
+<header>
+    <div class="logo">BVAIDE</div>
+</header>
 
-    <header>
-        <div style="font-size: 24px;">☰</div>
-        <div class="brand-name">BVAIDE</div>
-        <img src="https://i.ibb.co/LzNf9F8/bvaide-logo.png" class="nav-logo" alt="BVAIDE">
-    </header>
+<nav class="main-menu">
+    <a href="#">Rings</a>
+    <a href="#">Earrings</a>
+    <a href="#" class="active">Necklaces</a>
+    <a href="#">Bracelets</a>
+</nav>
 
-    <div class="hero">
-        <h1>ANTI-TARNISH LUXURY</h1>
-        <p>FOR THE EXTRAORDINARY WOMAN</p>
-    </div>
+<div class="category-info">
+    <h1>NECKLACES</h1>
+    <p>Elegant designs for every occasion</p>
+</div>
 
-    <h2 style="padding: 20px 20px 0; font-family: 'Playfair Display';">Editor's Pick</h2>
-    <div class="special-box">
-        <div class="p-img-box">
-            <img src="https://i.ibb.co/hR8YV4m/model-pendant.jpg" alt="Bvaide Pink Muse">
-        </div>
-        <div class="details">
-            <span class="tarnish-tag">ANTI-TARNISH</span>
-            <h2>The Pink Muse Pendant</h2>
-            <div class="price-row">
-                <span class="new-price">₹799</span>
-                <span class="old-price">₹1,199</span>
+<div class="container">
+    <div class="product-grid">
+        
+        <div class="product-card">
+            <span class="product-tag">BEST SELLER</span>
+            <img src="https://i.ibb.co/XRs6Z7V/1000260606.jpg" alt="Pearl & Heart Duo">
+            <div class="product-details">
+                <h3 class="product-title">Pearl & Heart Duo</h3>
+                <div class="price-box">
+                    <span class="old-price">₹599</span>
+                    <span class="new-price">₹499</span>
+                </div>
+                <a href="#" class="buy-btn">ORDER ON WHATSAPP</a>
             </div>
-            <a href="https://wa.me/918360357167?text=Hi Bvaide, I want to order the Pink Muse Pendant" style="text-decoration:none;">
-                <button class="buy-btn">BUY ON WHATSAPP</button>
-            </a>
         </div>
+
+        <div class="product-card">
+            <span class="product-tag">NEW ARRIVAL</span>
+            <img src="https://i.ibb.co/3W6M4qN/1000260595.jpg" alt="Gemstone Mosaic">
+            <div class="product-details">
+                <h3 class="product-title">Gemstone Mosaic</h3>
+                <div class="price-box">
+                    <span class="old-price">₹599</span>
+                    <span class="new-price">₹499</span>
+                </div>
+                <a href="#" class="buy-btn">ORDER ON WHATSAPP</a>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <span class="product-tag">LUXURY</span>
+            <img src="https://i.ibb.co/N1R0D6L/1000260607.jpg" alt="Dual Heart Lariat">
+            <div class="product-details">
+                <h3 class="product-title">Dual Heart Lariat</h3>
+                <div class="price-box">
+                    <span class="old-price">₹799</span>
+                    <span class="new-price">₹699</span>
+                </div>
+                <a href="#" class="buy-btn">ORDER ON WHATSAPP</a>
+            </div>
+        </div>
+
     </div>
+</div>
 
-    <h2 style="padding: 10px 20px; font-family: 'Playfair Display';">Collections</h2>
-    <div class="category-grid">
-        <div class="cat-card"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400"><h3>Rings</h3></div>
-        <div class="cat-card"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400"><h3>Bangles</h3></div>
-        <div class="cat-card"><img src="https://images.unsplash.com/photo-1573408302355-4e0b3c0ad6df?w=400"><h3>Bracelets</h3></div>
-        <div class="cat-card"><img src="https://images.unsplash.com/photo-1535633302704-b042c0522dca?w=400"><h3>Earrings</h3></div>
-    </div>
-
-    <div class="trust">
-        <div class="trust-item">✨ <b>18K Gold Plated</b> (Skin Friendly)</div>
-        <div class="trust-item">🔒 <b>Anti-Tarnish</b> (Long Life)</div>
-        <div class="trust-item">🚚 <b>Fast Delivery</b> (All Over India)</div>
-    </div>
-
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active"><span>🏠</span>HOME</a>
-        <a href="https://wa.me/918360357167" class="nav-item"><span>💬</span>WHATSAPP</a>
-        <a href="#" class="nav-item"><span>❤️</span>WISHLIST</a>
-        <a href="https://instagram.com/bvaide.in" class="nav-item"><span>👤</span>INSTA</a>
-    </nav>
-
-    <script>
-        // Splash screen timer
-        setTimeout(() => {
-            document.getElementById('splash').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('splash').style.display = 'none';
-            }, 800);
-        }, 2500);
-    </script>
 </body>
 </html>
-<div class="shop-necklace-item">
-    <div class="image-wrapper">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...[Aapki image_0 ka data]..." alt="Elegant Pearl & Heart Duo Chain">
-    </div>
-    <p class="product-category">NECKLACES</p>
-    <h3 class="product-title">Pearl & Heart Duo</h3>
-    <p class="price-info">
-        <span class="original-price">₹599</span>
-        <span class="sale-price">₹499</span>
-    </p>
-</div>
-
-<div class="shop-necklace-item">
-    <div class="image-wrapper">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...[Aapki image_1 ka data]..." alt="Gemstone Mosaic Pendant Necklace">
-    </div>
-    <p class="product-category">NECKLACES</p>
-    <h3 class="product-title">Gemstone Square Mosaic</h3>
-    <p class="price-info">
-        <span class="original-price">₹599</span>
-        <span class="sale-price">₹499</span>
-    </p>
-</div>
-
-<div class="shop-necklace-item">
-    <div class="image-wrapper">
-        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...[Aapki image_2 ka data]..." alt="Dual Heart Drop Lariat">
-    </div>
-    <p class="product-category">NECKLACES</p>
-    <h3 class="product-title">Dual Heart Lariat</h3>
-    <p class="price-info">
-        <span class="original-price">₹799</span>
-        <span class="sale-price">₹699</span>
-    </p>
-</div>
-/* Pricing display aur strike-through styling */
-.shop-necklace-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    text-align: center;
-    background-color: white;
-    margin-bottom: 20px;
-    width: 250px; /* Ya fir aapki website ka standard layout width */
-}
-
-.shop-necklace-item .image-wrapper img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-}
-
-.product-category {
-    color: #888;
-    font-size: 12px;
-    margin: 10px 0 2px 0;
-}
-
-.product-title {
-    font-size: 16px;
-    margin: 0 0 10px 0;
-    font-weight: 500;
-}
-
-.price-info {
-    font-size: 16px;
-    margin: 0;
-}
-
-.original-price {
-    text-decoration: line-through; /* Ye price ko cut karega */
-    color: #888;
-    margin-right: 10px;
-}
-
-.sale-price {
-    font-weight: bold; /* Ye price ko dark dikhayega */
-    color: #000;
-}
-
