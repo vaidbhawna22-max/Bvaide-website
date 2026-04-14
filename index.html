@@ -1,109 +1,433 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BVAIDE | Necklaces Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Helvetica Neue', sans-serif; margin: 0; background-color: #fff; color: #1a1a1a; }
-        
-        /* Professional Header */
-        header { padding: 20px; text-align: center; border-bottom: 1px solid #f0f0f0; background: #fff; position: sticky; top: 0; z-index: 1000; }
-        .logo { font-size: 26px; font-weight: bold; letter-spacing: 6px; color: #001f3f; text-transform: uppercase; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* Navigation Menu */
-        nav.main-menu { display: flex; justify-content: center; gap: 30px; padding: 15px 0; border-bottom: 1px solid #f9f9f9; font-size: 13px; font-weight: 600; letter-spacing: 1px; }
-        nav.main-menu a { text-decoration: none; color: #555; text-transform: uppercase; }
-        nav.main-menu a.active { color: #001f3f; border-bottom: 2px solid #001f3f; padding-bottom: 5px; }
+        :root {
+            --gold: #bca05d;
+            --navy: #001f3f;
+            --cream: #faf8f5;
+            --light: #f4f1ec;
+            --text: #1a1a1a;
+            --muted: #888;
+        }
 
-        /* Category Header */
-        .category-info { text-align: center; padding: 40px 20px; background: #fafafa; }
-        .category-info h1 { font-size: 22px; font-weight: 400; letter-spacing: 3px; margin: 0; }
-        .category-info p { font-size: 12px; color: #888; margin-top: 10px; }
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            min-height: 100vh;
+        }
 
-        /* Professional Product Grid */
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        /* HEADER */
+        header {
+            background: #fff;
+            padding: 18px 20px;
+            text-align: center;
+            border-bottom: 1px solid #ede8e0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 4px;
+            color: var(--navy);
+            text-transform: uppercase;
+        }
+        .logo .bv { color: var(--navy); font-weight: 300; font-style: italic; }
+        .logo .aide { color: var(--gold); font-weight: 600; letter-spacing: 3px; }
+        .logo span {
+            color: var(--gold);
+        }
 
-        .product-card { background: #fff; text-align: left; position: relative; }
-        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: #f4f4f4; border-radius: 4px; }
-        
-        .product-details { padding: 12px 5px; }
-        .product-tag { font-size: 10px; color: #bca05d; font-weight: bold; margin-bottom: 5px; display: block; }
-        .product-title { font-size: 14px; font-weight: 500; margin: 0; color: #222; }
-        
-        .price-box { margin-top: 8px; font-size: 15px; }
-        .old-price { text-decoration: line-through; color: #999; font-size: 13px; margin-right: 8px; }
-        .new-price { font-weight: 700; color: #000; }
+        /* NAV */
+        nav.main-menu {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: #fff;
+            border-bottom: 1px solid #ede8e0;
+            overflow-x: auto;
+        }
+        nav.main-menu a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 14px 20px;
+            border-bottom: 2px solid transparent;
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        nav.main-menu a:hover {
+            color: var(--navy);
+        }
+        nav.main-menu a.active {
+            color: var(--navy);
+            border-bottom: 2px solid var(--gold);
+        }
 
-        /* Floating WhatsApp Button */
-        .buy-btn { display: block; width: 100%; background: #001f3f; color: #fff; text-align: center; padding: 10px 0; text-decoration: none; font-size: 12px; font-weight: 600; margin-top: 10px; border-radius: 2px; }
+        /* PAGE SECTIONS */
+        .page-section { display: none; }
+        .page-section.active { display: block; }
 
-        @media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; } }
+        /* HERO BANNER */
+        .category-header {
+            background: var(--light);
+            text-align: center;
+            padding: 35px 20px 30px;
+            border-bottom: 1px solid #ede8e0;
+        }
+        .category-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 6px;
+            color: var(--navy);
+            text-transform: uppercase;
+        }
+        .category-header p {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 8px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .gold-line {
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 14px auto 0;
+        }
+
+        /* PRODUCT GRID */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 15px 50px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (min-width: 768px) {
+            .product-grid { grid-template-columns: repeat(3, 1fr); gap: 35px; }
+        }
+
+        /* PRODUCT CARD */
+        .product-card {
+            background: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        }
+        .img-wrap {
+            position: relative;
+            overflow: hidden;
+        }
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--navy);
+            color: #fff;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 2px;
+        }
+        .product-tag.gold {
+            background: var(--gold);
+        }
+
+        .product-details {
+            padding: 14px 12px 16px;
+        }
+        .product-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+        .price-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #bbb;
+            font-size: 12px;
+        }
+        .new-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .buy-btn {
+            display: block;
+            width: 100%;
+            background: var(--navy);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 2px;
+            transition: background 0.25s ease;
+        }
+        .buy-btn:hover {
+            background: var(--gold);
+        }
+
+        /* COMING SOON PAGE */
+        .coming-soon {
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .coming-soon h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--navy);
+            text-transform: uppercase;
+        }
+        .coming-soon p {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 12px;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--navy);
+            color: #fff;
+            text-align: center;
+            padding: 25px 20px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">BVAIDE</div>
+    <div class="logo"><span class="bv">Bv</span><span class="aide">aidé</span></div>
 </header>
 
 <nav class="main-menu">
-    <a href="#">Rings</a>
-    <a href="#">Earrings</a>
-    <a href="#" class="active">Necklaces</a>
-    <a href="#">Bracelets</a>
+    <a href="#" onclick="showPage('rings', this)">Rings</a>
+    <a href="#" onclick="showPage('earrings', this)">Earrings</a>
+    <a href="#" onclick="showPage('necklaces', this)" class="active">Necklaces</a>
+    <a href="#" onclick="showPage('bracelets', this)">Bracelets</a>
 </nav>
 
-<div class="category-info">
-    <h1>NECKLACES</h1>
-    <p>Elegant designs for every occasion</p>
-</div>
-
-<div class="container">
-    <div class="product-grid">
-        
-        <div class="product-card">
-            <span class="product-tag">BEST SELLER</span>
-            <img src="https://i.ibb.co/XRs6Z7V/1000260606.jpg" alt="Pearl & Heart Duo">
-            <div class="product-details">
-                <h3 class="product-title">Pearl & Heart Duo</h3>
-                <div class="price-box">
-                    <span class="old-price">₹599</span>
-                    <span class="new-price">₹499</span>
-                </div>
-                <a href="#" class="buy-btn">ORDER ON WHATSAPP</a>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <span class="product-tag">NEW ARRIVAL</span>
-            <img src="https://i.ibb.co/3W6M4qN/1000260595.jpg" alt="Gemstone Mosaic">
-            <div class="product-details">
-                <h3 class="product-title">Gemstone Mosaic</h3>
-                <div class="price-box">
-                    <span class="old-price">₹599</span>
-                    <span class="new-price">₹499</span>
-                </div>
-                <a href="#" class="buy-btn">ORDER ON WHATSAPP</a>
-            </div>
-        </div>
-
-        <div class="product-card">
-            <span class="product-tag">LUXURY</span>
-            <img src="https://i.ibb.co/N1R0D6L/1000260607.jpg" alt="Dual Heart Lariat">
-            <div class="product-details">
-                <h3 class="product-title">Dual Heart Lariat</h3>
-                <div class="price-box">
-                    <span class="old-price">₹799</span>
-                    <span class="new-price">₹699</span>
-                </div>
-                <a href="#" class="buy-btn">ORDER ON WHATSAPP</a>
-            </div>
-        </div>
-
+<!-- NECKLACES PAGE -->
+<div id="necklaces" class="page-section active">
+    <div class="category-header">
+        <h1>Necklaces</h1>
+        <p>Elegant designs for every occasion</p>
+        <div class="gold-line"></div>
     </div>
-</div>
+    <div class="container">
+        <div class="product-grid">
 
-</body>
-</html>
+            <div class="product-card">
+                <div class="img-wrap">
+                    <span class="product-tag gold">Best Seller</span>
+                    <img src="data:image/jpeg;base64,/9j/4QEuRXhpZgAASUkqAAgAAAAGABoBBQABAAAAVgAAABsBBQABAAAAXgAAACgBAwABAAAAAgAA
+ADEBAgAhAAAAZgAAADIBAgAUAAAAiAAAAGmHBAABAAAAnAAAAAAAAAAsAQAAAQAAACwBAAABAAAA
+QWRvYmUgTGlnaHRyb29tIDExLjIuMyAoQW5kcm9pZCkAADIwMjY6MDQ6MTIgMTU6MDI6MzcACAAA
+kAcABAAAADAyMzEDkAIAFAAAAAIBAAAQkAIABwAAABYBAAARkAIABwAAAB4BAAAIkgMAAQAAAAAA
+AAAJkgMAAQAAAAAAAACRkgIABAAAADc0MgABoAMAAQAAAAEAAAAAAAAAMjAyNjowNDoxMiAxNDoz
+ODowOAArMDU6MzAAACswNTozMAAA/+0AgFBob3Rvc2hvcCAzLjAAOEJJTQPtAAAAAAAQASwAAAAB
+AAEBLAAAAAEAAThCSU0EBAAAAAAALBwBWgADGyVHHAIAAAIABBwCNwAIMjAyNjA0MTIcAjwACzE0
+MzgwOCswNTMwOEJJTQQlAAAAAAAQ6PmIp84QQ9qcwhMFDaBvRf/iDFhJQ0NfUFJPRklMRQABAQAA
+DEhMaW5vAhAAAG1udHJSR0IgWFlaIAfOAAIACQAGADEAAGFjc3BNU0ZUAAAAAElFQyBzUkdCAAAA
+AAAAAAAAAAAAAAD21gABAAAAANMtSFAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAEWNwcnQAAAFQAAAAM2Rlc2MAAAGEAAAAbHd0cHQAAAHwAAAAFGJrcHQA
+AAIEAAAAFHJYWVoAAAIYAAAAFGdYWVoAAAIsAAAAFGJYWVoAAAJAAAAAFGRtbmQAAAJUAAAAcGRt
+ZGQAAALEAAAAiHZ1ZWQAAANMAAAAhnZpZXcAAAPUAAAAJGx1bWkAAAP4AAAAFG1lYXMAAAQMAAAA
+JHRlY2gAAAQwAAAADHJUUkMAAAQ8AAAIDGdUUkMAAAQ8AAAIDGJUUkMAAAQ8AAAIDHRleHQAAAAA
+Q29weXJpZ2h0IChjKSAxOTk4IEhld2xldHQtUGFja2FyZCBDb21wYW55AABkZXNjAAAAAAAAABJz
+UkdCIElFQzYxOTY2LTIuMQAAAAAAAAAAAAAAEnNSR0IgSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYWVogAAAAAAAA81EAAQAAAAEW
+zFhZWiAAAAAAAAAAAAAAAAAAAAAAWFlaIAAAAAAAAG+iAAA49QAAA5BYWVogAAAAAAAAYpkAALeF
+AAAY2lhZWiAAAAAAAAAkoAAAD4QAALbPZGVzYwAAAAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNo
+AAAAAAAAAAAAAAAWSUVDIGh0dHA6Ly93d3cuaWVjLmNoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAGRlc2MAAAAAAAAALklFQyA2MTk2Ni0yLjEgRGVmYXVsdCBS
+R0IgY29sb3VyIHNwYWNlIC0gc1JHQgAAAAAAAAAAAAAALklFQyA2MTk2Ni0yLjEgRGVmYXVsdCBS
+R0IgY29sb3VyIHNwYWNlIC0gc1JHQgAAAAAAAAAAAAAAAAAAAAAAAAAAAABkZXNjAAAAAAAAACxS
+ZWZlcmVuY2UgVmlld2luZyBDb25kaXRpb24gaW4gSUVDNjE5NjYtMi4xAAAAAAAAAAAAAAAsUmVm
+ZXJlbmNlIFZpZXdpbmcgQ29uZGl0aW9uIGluIElFQzYxOTY2LTIuMQAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAdmlldwAAAAAAE6T+ABRfLgAQzxQAA+3MAAQTCwADXJ4AAAABWFlaIAAAAAAATAlW
+AFAAAABXH+dtZWFzAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAACjwAAAAJzaWcgAAAAAENSVCBj
+dXJ2AAAAAAAABAAAAAAFAAoADwAUABkAHgAjACgALQAyADcAOwBAAEUASgBPAFQAWQBeAGMAaABt
+AHIAdwB8AIEAhgCLAJAAlQCaAJ8ApACpAK4AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA8AD2APsB
+AQEHAQ0BEwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGSAZoBoQGpAbEBuQHB
+AckB0QHZAeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcCcQJ6AoQCjgKYAqICrAK2AsEC
+ywLVAuAC6wL1AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+A4oDlgOiA64DugPHA9MD4APsA/kEBgQT
+BCAELQQ7BEgEVQRjBHEEfgSMBJoEqAS2BMQE0wThBPAE/gUNBRwFKwU6BUkFWAVnBXcFhgWWBaYF
+tQXFBdUF5QX2BgYGFgYnBjcGSAZZBmoGewaMBp0GrwbABtEG4wb1BwcHGQcrBz0HTwdhB3QHhgeZ
+B6wHvwfSB+UH+AgLCB8IMghGCFoIbgiCCJYIqgi+CNII5wj7CRAJJQk6CU8JZAl5CY8JpAm6Cc8J
+5Qn7ChEKJwo9ClQKagqBCpgKrgrFCtwK8wsLCyILOQtRC2kLgAuYC7ALyAvhC/kMEgwqDEMMXAx1
+DI4MpwzADNkM8w0NDSYNQA1aDXQNjg2pDcMN3g34DhMOLg5JDmQOfw6bDrYO0g7uDwkPJQ9BD14P
+eg+WD7MPzw/sEAkQJhBDEGEQfhCbELkQ1xD1ERMRMRFPEW0RjBGqEckR6BIHEiYSRRJkEoQSoxLD
+EuMTAxMjE0MTYxODE6QTxRPlFAYUJxRJFGoUixStFM4U8BUSFTQVVhV4FZsVvRXgFgMWJhZJFmwW
+jxayFtYW+hcdF0EXZReJF64X0hf3GBsYQBhlGIoYrxjVGPoZIBlFGWsZkRm3Gd0aBBoqGlEadxqe
+GsUa7BsUGzsbYxuKG7Ib2hwCHCocUhx7HKMczBz1HR4dRx1wHZkdwx3sHhYeQB5qHpQevh7pHxMf
+Ph9pH5Qfvx/qIBUgQSBsIJggxCDwIRwhSCF1IaEhziH7IiciVSKCIq8i3SMKIzgjZiOUI8Ij8CQf
+JE0kfCSrJNolCSU4JWgllyXHJfcmJyZXJocmtyboJxgnSSd6J6sn3CgNKD8ocSiiKNQpBik4KWsp
+nSnQKgIqNSpoKpsqzysCKzYraSudK9EsBSw5LG4soizXLQwtQS12Last4S4WLkwugi63Lu4vJC9a
+L5Evxy/+MDUwbDCkMNsxEjFKMYIxujHyMioyYzKbMtQzDTNGM38zuDPxNCs0ZTSeNNg1EzVNNYc1
+wjX9Njc2cjauNuk3JDdgN5w31zgUOFA4jDjIOQU5Qjl/Obw5+To2OnQ6sjrvOy07azuqO+g8Jzxl
+PKQ84z0iPWE9oT3gPiA+YD6gPuA/IT9hP6I/4kAjQGRApkDnQSlBakGsQe5CMEJyQrVC90M6Q31D
+wEQDREdEikTORRJFVUWaRd5GIkZnRqtG8Ec1R3tHwEgFSEtIkUjXSR1JY0mpSfBKN0p9SsRLDEtT
+S5pL4kwqTHJMuk0CTUpNk03cTiVObk63TwBPSU+TT91QJ1BxULtRBlFQUZtR5lIxUnxSx1MTU19T
+qlP2VEJUj1TbVShVdVXCVg9WXFapVvdXRFeSV+BYL1h9WMtZGllpWbhaB1pWWqZa9VtFW5Vb5Vw1
+XIZc1l0nXXhdyV4aXmxevV8PX2Ffs2AFYFdgqmD8YU9homH1YklinGLwY0Njl2PrZEBklGTpZT1l
+kmXnZj1mkmboZz1nk2fpaD9olmjsaUNpmmnxakhqn2r3a09rp2v/bFdsr20IbWBtuW4SbmtuxG8e
+b3hv0XArcIZw4HE6cZVx8HJLcqZzAXNdc7h0FHRwdMx1KHWFdeF2Pnabdvh3VnezeBF4bnjMeSp5
+iXnnekZ6pXsEe2N7wnwhfIF84X1BfaF+AX5ifsJ/I3+Ef+WAR4CogQqBa4HNgjCCkoL0g1eDuoQd
+hICE44VHhauGDoZyhteHO4efiASIaYjOiTOJmYn+imSKyoswi5aL/IxjjMqNMY2Yjf+OZo7OjzaP
+npAGkG6Q1pE/kaiSEZJ6kuOTTZO2lCCUipT0lV+VyZY0lp+XCpd1l+CYTJi4mSSZkJn8mmia1ZtC
+m6+cHJyJnPedZJ3SnkCerp8dn4uf+qBpoNihR6G2oiailqMGo3aj5qRWpMelOKWpphqmi6b9p26n
+4KhSqMSpN6mpqhyqj6sCq3Wr6axcrNCtRK24ri2uoa8Wr4uwALB1sOqxYLHWskuywrM4s660JbSc
+tRO1irYBtnm28Ldot+C4WbjRuUq5wro7urW7LrunvCG8m70VvY++Cr6Evv+/er/1wHDA7MFnwePC
+X8Lbw1jD1MRRxM7FS8XIxkbGw8dBx7/IPci8yTrJuco4yrfLNsu2zDXMtc01zbXONs62zzfPuNA5
+0LrRPNG+0j/SwdNE08bUSdTL1U7V0dZV1tjXXNfg2GTY6Nls2fHadtr724DcBdyK3RDdlt4c3qLf
+Kd+v4DbgveFE4cziU+Lb42Pj6+Rz5PzlhOYN5pbnH+ep6DLovOlG6dDqW+rl63Dr++yG7RHtnO4o
+7rTvQO/M8Fjw5fFy8f/yjPMZ86f0NPTC9VD13vZt9vv3ivgZ+Kj5OPnH+lf65/t3/Af8mP0p/br+
+S/7c/23////hay1odHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvADw/eHBhY2tldCBiZWdpbj0i
+77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+Cjx4OnhtcG1ldGEgeG1sbnM6eD0i
+YWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDcuMC1jMDAwIDEuMDAwMDAw
+LCAwMDAwLzAwLzAwLTAwOjAwOjAwICAgICAgICAiPgogPHJkZjpSREYgeG1sbnM6cmRmPSJodHRw
+Oi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICA8cmRmOkRlc2NyaXB0
+aW9uIHJkZjphYm91dD0iIgogICAgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8x
+LjAvIgogICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8x
+LjAvIgogICAgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIgogICAg
+eG1sbnM6Y3JzPSJodHRwOi8vbnMuYWRvYmUuY29tL2NhbWVyYS1yYXctc2V0dGluZ3MvMS4wLyIK
+ICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgeG1s
+bnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50
+IyIKICAgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBMaWdodHJvb20gMTEuMi4zIChBbmRyb2lkKSIK
+ICAgeG1wOk1vZGlmeURhdGU9IjIwMjYtMDQtMTJUMTU6MDI6MzcrMDU6MzAiCiAgIHhtcDpNZXRh
+ZGF0YURhdGU9IjIwMjYtMDQtMTJUMTU6MDI6MzcrMDU6MzAiCiAgIHBob3Rvc2hvcDpEYXRlQ3Jl
+YXRlZD0iMjAyNi0wNC0xMlQxNDozODowOC43NDIrMDU6MzAiCiAgIGRjOmZvcm1hdD0iaW1hZ2Uv
+anBlZyIKICAgY3JzOlJhd0ZpbGVOYW1lPSJTY3JlZW5zaG90XzIwMjYwNDEyXzE0MzgwOC5qcGci
+CiAgIGNyczpWZXJzaW9uPSIxOC4yIgogICBjcnM6Q29tcGF0aWJsZVZlcnNpb249IjI2ODYzMjA2
+NCIKICAgY3JzOlByb2Nlc3NWZXJzaW9uPSIxNS40IgogICBjcnM6V2hpdGVCYWxhbmNlPSJBcyBT
+aG90IgogICBjcnM6SW5jcmVtZW50YWxUZW1wZXJhdHVyZT0iMCIKICAgY3JzOkluY3JlbWVudGFs
+VGludD0iMCIKICAgY3JzOkV4cG9zdXJlMjAxMj0iMC4wMCIKICAgY3JzOkNvbnRyYXN0MjAxMj0i
+LTciCiAgIGNyczpIaWdobGlnaHRzMjAxMj0iKzE3IgogICBjcnM6U2hhZG93czIwMTI9IisyIgog
+ICBjcnM6V2hpdGVzMjAxMj0iMCIKICAgY3JzOkJsYWNrczIwMTI9IjAiCiAgIGNyczpUZXh0dXJl
+PSIwIgogICBjcnM6Q2xhcml0eTIwMTI9IjAiCiAgIGNyczpEZWhhemU9IjAiCiAgIGNyczpWaWJy
+YW5jZT0iMCIKICAgY3JzOlNhdHVyYXRpb249IjAiCiAgIGNyczpQYXJhbWV0cmljU2hhZG93cz0i
+MCIKICAgY3JzOlBhcmFtZXRyaWNEYXJrcz0iMCIKICAgY3JzOlBhcmFtZXRyaWNMaWdodHM9IjAi
+CiAgIGNyczpQYXJhbWV0cmljSGlnaGxpZ2h0cz0iMCIKICAgY3JzOlBhcmFtZXRyaWNTaGFkb3dT
+cGxpdD0iMjUiCiAgIGNyczpQYXJhbWV0cmljTWlkdG9uZVNwbGl0PSI1MCIKICAgY3JzOlBhcmFt
+ZXRyaWNIaWdobGlnaHRTcGxpdD0iNzUiCiAgIGNyczpTaGFycG5lc3M9IjAiCiAgIGNyczpMdW1p
+bmFuY2VTbW9vdGhpbmc9IjAiCiAgIGNyczpDb2xvck5vaXNlUmVkdWN0aW9uPSIwIgogICBjcnM6
+SHVlQWRqdXN0bWVudFJlZD0iMCIKICAgY3JzOkh1ZUFkanVzdG1lbnRPcmFuZ2U9IjAiCiAgIGNy
+czpIdWVBZGp1c3RtZW50WWVsbG93PSIwIgogICBjcnM6SHVlQWRqdXN0bWVudEdyZWVuPSIwIgog
+ICBjcnM6SHVlQWRqdXN0bWVudEFxdWE9IjAiCiAgIGNyczpIdWVBZGp1c3RtZW50Qmx1ZT0iMCIK
+ICAgY3JzOkh1ZUFkanVzdG1lbnRQdXJwbGU9IjAiCiAgIGNyczpIdWVBZGp1c3RtZW50TWFnZW50
+YT0iMCIKICAgY3JzOlNhdHVyYXRpb25BZGp1c3RtZW50UmVkPSIwIgogICBjcnM6U2F0dXJhdGlv
+bkFkanVzdG1lbnRPcmFuZ2U9IjAiCiAgIGNyczpTYXR1cmF0aW9uQWRqdXN0bWVudFllbGxvdz0i
+MCIKICAgY3JzOlNhdHVyYXRpb25BZGp1c3RtZW50R3JlZW49IjAiCiAgIGNyczpTYXR1cmF0aW9u
+QWRqdXN0bWVudEFxdWE9IjAiCiAgIGNyczpTYXR1cmF0aW9uQWRqdXN0bWVudEJsdWU9IjAiCiAg
+IGNyczpTYXR1cmF0aW9uQWRqdXN0bWVudFB1cnBsZT0iMCIKICAgY3JzOlNhdHVyYXRpb25BZGp1
+c3RtZW50TWFnZW50YT0iMCIKICAgY3JzOkx1bWluYW5jZUFkanVzdG1lbnRSZWQ9IjAiCiAgIGNy
+czpMdW1pbmFuY2VBZGp1c3RtZW50T3JhbmdlPSIwIgogICBjcnM6THVtaW5hbmNlQWRqdXN0bWVu
+dFllbGxvdz0iMCIKICAgY3JzOkx1bWluYW5jZUFkanVzdG1lbnRHcmVlbj0iMCIKICAgY3JzOkx1
+bWluYW5jZUFkanVzdG1lbnRBcXVhPSIwIgogICBjcnM6THVtaW5hbmNlQWRqdXN0bWVudEJsdWU9
+IjAiCiAgIGNyczpMdW1pbmFuY2VBZGp1c3RtZW50UHVycGxlPSIwIgogICBjcnM6THVtaW5hbmNl
+QWRqdXN0bWVudE1hZ2VudGE9IjAiCiAgIGNyczpTcGxpdFRvbmluZ1NoYWRvd0h1ZT0iMCIKICAg
+Y3JzOlNwbGl0VG9uaW5nU2hhZG93U2F0dXJhdGlvbj0iMCIKICAgY3JzOlNwbGl0VG9uaW5nSGln
+aGxpZ2h0SHVlPSIwIgogICBjcnM6U3BsaXRUb25pbmdIaWdobGlnaHRTYXR1cmF0aW9uPSIwIgog
+ICBjcnM6U3BsaXRUb25pbmdCYWxhbmNlPSIwIgogICBjcnM6Q29sb3JHcmFkZU1pZHRvbmVIdWU9
+IjAiCiAgIGNyczpDb2xvckdyYWRlTWlkdG9uZVNhdD0iMCIKICAgY3JzOkNvbG9yR3JhZGVTaGFk
+b3dMdW09IjAiCiAgIGNyczpDb2xvckdyYWRlTWlkdG9uZUx1bT0iMCIKICAgY3JzOkNvbG9yR3Jh
+ZGVIaWdobGlnaHRMdW09IjAiCiAgIGNyczpDb2xvckdyYWRlQmxlbmRpbmc9IjUwIgogICBjcnM6
+Q29sb3JHcmFkZUdsb2JhbEh1ZT0iMCIKICAgY3JzOkNvbG9yR3JhZGVHbG9iYWxTYXQ9IjAiCiAg
+IGNyczpDb2xvckdyYWRlR2xvYmFsTHVtPSIwIgogICBjcnM6QXV0b0xhdGVyYWxDQT0iMCIKICAg
+Y3JzOkxlbnNQcm9maWxlRW5hYmxlPSIwIgogICBjcnM6TGVuc01hbnVhbERpc3RvcnRpb25BbW91
+bnQ9IjAiCiAgIGNyczpWaWduZXR0ZUFtb3VudD0iMCIKICAgY3JzOkRlZnJpbmdlUHVycGxlQW1v
+dW50PSIwIgogICBjcnM6RGVmcmluZ2VQdXJwbGVIdWVMbz0iMzAiCiAgIGNyczpEZWZyaW5nZVB1
+cnBsZUh1ZUhpPSI3MCIKICAgY3JzOkRlZnJpbmdlR3JlZW5BbW91bnQ9IjAiCiAgIGNyczpEZWZy
+aW5nZUdyZWVuSHVlTG89IjQwIgogICBjcnM6RGVmcmluZ2VHcmVlbkh1ZUhpPSI2MCIKICAgY3Jz
+OlBlcnNwZWN0aXZlVXByaWdodD0iMCIKICAgY3JzOlBlcnNwZWN0aXZlVmVydGljYWw9IjAiCiAg
+IGNyczpQZXJzcGVjdGl2ZUhvcml6b250YWw9IjAiCiAgIGNyczpQZXJzcGVjdGl2ZVJvdGF0ZT0i
+MC4wIgogICBjcnM6UGVyc3BlY3RpdmVBc3BlY3Q9IjAiCiAgIGNyczpQZXJzcGVjdGl2ZVNjYWxl
+PSIxMDAiCiAgIGNyczpQZXJzcGVjdGl2ZVg9IjAuMDAiCiAgIGNyczpQZXJzcGVjdGl2ZVk9IjAu
+MDAiCiAgIGNyczpHcmFpbkFtb3VudD0iMCIKICAgY3JzOlBvc3RDcm9wVmlnbmV0dGVBbW91bnQ9
+IjAiCiAgIGNyczpTaGFkb3dUaW50PSIwIgogICBjcnM6UmVkSHVlPSIwIgogICBjcnM6UmVkU2F0
+dXJhdGlvbj0iMCIKICAgY3JzOkdyZWVuSHVlPSIwIgogICBjcnM6R3JlZW5TYXR1cmF0aW9uPSIw
+IgogICBjcnM6Qmx1ZUh1ZT0iMCIKICAgY3JzOkJsdWVTYXR1cmF0aW9uPSIwIgogICBjcnM6SERS
+RWRpdE1vZGU9IjAiCiAgIGNyczpDb252ZXJ0VG9HcmF5c2NhbGU9IkZhbHNlIgogICBjcnM6T3Zl
+cnJpZGVMb29rVmlnbmV0dGU9IkZhbHNlIgogICBjcnM6VG9uZUN1cnZlTmFtZTIwMTI9IkxpbmVh
+ciIKICAgY3JzOkNhbWVyYVByb2ZpbGU9IkVtYmVkZGVkIgogICBjcnM6Q2FtZXJhUHJvZmlsZURp
+Z2VzdD0iNTQ2NTBBMzQxQjVCNUNDQUU4NDQyRDBCNDNBOTJCQ0UiCiAgIGNyczpBdXRvVG9uZURp
+Z2VzdD0iQjUwNTVCRUU5ODNGMDc1QTU1NDU2NUVEMzkwRTMxMTEiCiAgIGNyczpBdXRvVG9uZURp
+Z2VzdE5vU2F0PSJGODk2NzRCMzEyRjYxNzcwQzhEOUNDQTMzODZGNDdCOSIKICAgY3JzOkhhc1Nl
+dHRpbmdzPSJUcnVlIgogICBjcnM6Q3JvcFRvcD0iMC4yNzUiCiAgIGNyczpDcm9wTGVmdD0iMCIK
+ICAgY3JzOkNyb3BCb3R0b209IjAuNzI1IgogICBjcnM6Q3JvcFJpZ2h0PSIxIgogICBjcnM6Q3Jv
+cEFuZ2xlPSIwIgogICBjcnM6Q3JvcENvbnN0cmFpblRvV2FycD0iMCIKICAgY3JzOkNyb3BDb25z
+dHJhaW5Ub1VuaXRTcXVhcmU9IjEiCiAgIGNyczpIYXNDcm9wPSJUcnVlIgogICBjcnM6QWxyZWFk
+eUFwcGxpZWQ9IlRydWUiCiAgIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Mjk0OTI3OTMtZTFm
+OC00OTQ1LWI1ZGMtMGZjZDI5YzBmNGVhIgogICB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjI5
+NDkyNzkzLWUxZjgtNDk0NS1iNWRjLTBmY2QyOWMwZjRlYSIKICAgeG1wTU06T3JpZ2luYWxEb2N1
+bWVudElEPSJ4bXAuZGlkOjI5NDkyNzkzLWUxZjgtNDk0NS1iNWRjLTBmY2QyOWMwZjRlYSI+CiAg
+IDxjcnM6VG9uZUN1cnZlUFYyMDEyPgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaT4wLCAwPC9y
+ZGY6bGk+CiAgICAgPHJkZjpsaT4yNTUsIDI1NTwvcmRmOmxpPgogICAgPC9yZGY6U2VxPgogICA8
+L2NyczpUb25lQ3VydmVQVjIwMTI+CiAgIDxjcnM6VG9uZUN1cnZlUFYyMDEyUmVkPgogICAgPHJk
+ZjpTZXE+CiAgICAgPHJkZjpsaT4wLCAwPC9yZGY6bGk+CiAgICAgPHJkZjpsaT4yNTUsIDI1NTwv
+cmRmOmxpPgogICAgPC9yZGY6U2VxPgogICA8L2NyczpUb25lQ3VydmVQVjIwMTJSZWQ+CiAgIDxj
+cnM6VG9uZUN1cnZlUFYyMDEyR3JlZW4+CiAgICA8cmRmOlNlcT4KICAgICA8cmRmOmxpPjAsIDA8
+L3JkZjpsaT4KICAgICA8cmRmOmxpPjI1NSwgMjU1PC9yZGY6bGk+CiAgICA8L3JkZjpTZXE+CiAg
+IDwvY3JzOlRvbmVDdXJ2ZVBWMjAxMkdyZWVuPgogICA8Y3JzOlRvbmVDdXJ2ZVBWMjAxMkJsdWU+
+CiAgICA8cmRmOlNlcT4KICAgICA8cmRmOmxpPjAsIDA8L3JkZjpsaT4KICAgICA8cmRmOmxpPjI1
+NSwgMjU1PC9yZGY6bGk+CiAgICA8L3JkZjpTZXE+CiAgIDwvY3JzOlRvbmVDdXJ2ZVBWMjAxMkJs
+dWU+CiAgIDxjcnM6UG9pbnRDb2xvcnM+CiAgICA8cmRmOlNlcT4KICAgICA8cmRmOmxpPi0xLjAw
+MDAwMCwgLTEuMDAwMDAwLCAtMS4wMDAwMDAsIC0xLjAwMDAwMCwgLTEuMDAwMDAwLCAtMS4wMDAw
+MDAsIC0xLjAwMDAwMCwgLTEuMDAwMDAwLCAtMS4wMDAwMDAsIC0xLjAwMDAwMCwgLTEuMDAwMDAw
+LCAtMS4wMDAwMDAsIC0xLjAwMDAwMCwgLTEuMDAwMDAwLCAtMS4wMDAwMDAsIC0xLjA
